@@ -37,7 +37,7 @@ jobs:
       - name: Check out code.
         uses: actions/checkout@v1
       - name: rubocop
-        uses: mgrachev/action-rubocop@master
+        uses: mgrachev/action-rubocop@v0.1.3
         with:
           github_token: ${{ secrets.github_token }}
 ```
