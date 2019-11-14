@@ -1,4 +1,4 @@
-# GitHub Action: Run golangci-lint with reviewdog
+# GitHub Action: Run rubocop with reviewdog
 
 This action runs [rubocop](https://github.com/rubocop-hq/rubocop) with
 [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve
