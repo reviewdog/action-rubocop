@@ -41,3 +41,12 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
 ```
+
+## Sponsor
+
+<p>
+  <a href="https://evrone.com/?utm_source=action-rubocop">
+    <img src="https://solovev.one/static/evrone-sponsored-300.png" 
+      alt="Sponsored by Evrone" width="210">
+  </a>
+</p>
