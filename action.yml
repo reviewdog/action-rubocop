@@ -1,0 +1,27 @@
+name: 'Run rubocop with reviewdog'
+description: '🐶 Run rubocop with reviewdog on pull requests to improve code review experience.'
+author: 'mgrachev (reviewdog)'
+inputs:
+  github_token:
+    description: 'GITHUB_TOKEN.'
+    required: true
+  rubocop_flags:
+    description: 'rubocop flags. (rubocop <rubocop_flags>)'
+    default: ''
+  tool_name:
+    description: 'Tool name to use for reviewdog reporter'
+    default: 'rubocop'
+  level:
+    description: 'Report level for reviewdog [info,warning,error]'
+    default: 'error'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.github_token }}
+    - ${{ inputs.rubocop_flags }}
+    - ${{ inputs.tool_name }}
+    - ${{ inputs.level }}
+branding:
+  icon: 'check-circle'
+  color: 'red'
