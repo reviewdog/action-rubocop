@@ -14,6 +14,11 @@ inputs:
   level:
     description: 'Report level for reviewdog [info,warning,error]'
     default: 'error'
+  reporter:
+    description: |
+      Reporter of reviewdog command [github-pr-check,github-pr-review].
+      Default is github-pr-check.
+    default: 'github-pr-check'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -22,6 +27,7 @@ runs:
     - ${{ inputs.rubocop_flags }}
     - ${{ inputs.tool_name }}
     - ${{ inputs.level }}
+    - ${{ inputs.reporter }}
 branding:
   icon: 'check-circle'
   color: 'red'

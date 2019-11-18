@@ -21,8 +21,13 @@ actions with different config.
 
 ### `level`
 
-Optional. Report level for reviewdog [info,warning,error].
+Optional. Report level for reviewdog [`info`, `warning`, `error`].
 It's same as `-level` flag of reviewdog.
+
+### `reporter`
+
+Optional. Reporter of reviewdog command [`github-pr-check`, `github-pr-review`].
+The default is `github-pr-check`.
 
 ## Example usage
 
@@ -30,16 +35,17 @@ It's same as `-level` flag of reviewdog.
 name: reviewdog
 on: [pull_request]
 jobs:
-  misspell:
+  rubocop:
     name: runner / rubocop
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code.
+      - name: Check out code
         uses: actions/checkout@v1
       - name: rubocop
-        uses: mgrachev/action-rubocop@v0.1.3
+        uses: mgrachev/action-rubocop@v1.0.0
         with:
           github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review # Default is github-pr-check
 ```
 
 ## Sponsor
