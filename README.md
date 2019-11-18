@@ -1,5 +1,7 @@
 # GitHub Action: Run rubocop with reviewdog
 
+![](https://github.com/mgrachev/action-rubocop/workflows/Docker%20Image%20CI/badge.svg)
+
 This action runs [rubocop](https://github.com/rubocop-hq/rubocop) with
 [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve
 code review experience.
