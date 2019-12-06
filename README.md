@@ -1,6 +1,6 @@
 # GitHub Action: Run rubocop with reviewdog
 
-![](https://github.com/mgrachev/action-rubocop/workflows/Docker%20Image%20CI/badge.svg)
+![](https://github.com/reviewdog/action-rubocop/workflows/Docker%20Image%20CI/badge.svg)
 
 This action runs [rubocop](https://github.com/rubocop-hq/rubocop) with
 [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve
@@ -58,7 +58,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v1
       - name: rubocop
-        uses: mgrachev/action-rubocop@v1.0.0
+        uses: reviewdog/action-rubocop@v1.0.0
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review # Default is github-pr-check
