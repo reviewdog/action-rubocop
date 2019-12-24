@@ -1,4 +1,4 @@
-# GitHub Action: Run rubocop with reviewdog
+# GitHub Action: Run rubocop with reviewdog 🐶
 
 ![](https://github.com/reviewdog/action-rubocop/workflows/Docker%20Image%20CI/badge.svg)
 
