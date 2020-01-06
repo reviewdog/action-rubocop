@@ -58,7 +58,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v1
       - name: rubocop
-        uses: reviewdog/action-rubocop@v1.0.0
+        uses: reviewdog/action-rubocop@v1
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review # Default is github-pr-check
