@@ -1,6 +1,8 @@
 # GitHub Action: Run rubocop with reviewdog 🐶
 
-![](https://github.com/reviewdog/action-rubocop/workflows/Docker%20Image%20CI/badge.svg)
+![](https://github.com/reviewdog/action-rubocop/workflows/CI/badge.svg)
+![](https://img.shields.io/github/license/reviewdog/action-rubocop)
+![](https://img.shields.io/github/v/release/reviewdog/action-rubocop)
 
 This action runs [rubocop](https://github.com/rubocop-hq/rubocop) with
 [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve
@@ -72,3 +74,7 @@ jobs:
       alt="Sponsored by Evrone" width="210">
   </a>
 </p>
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit)
