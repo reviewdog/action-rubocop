@@ -47,6 +47,30 @@ It's same as `-level` flag of reviewdog.
 Optional. Reporter of reviewdog command [`github-pr-check`, `github-pr-review`].
 The default is `github-pr-check`.
 
+### `rubocop_version`
+
+**Required**. Set rubocop version. 
+
+### `rubocop_rails_version`
+
+**Required**. Set rubocop rails version.
+
+### `rubocop_performance_version`
+
+**Required**. Set rubocop performance version.
+
+### `rubocop_rspec_version`
+
+**Required**. Set rubocop rspec version.
+
+### `rubocop_i18n_version`
+
+**Required**. Set rubocop i18n version.
+
+### `rubocop_rake_version`
+
+**Required**. Set rubocop rake version.
+
 ## Example usage
 
 ```yml

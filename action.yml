@@ -19,6 +19,24 @@ inputs:
       Reporter of reviewdog command [github-pr-check,github-pr-review].
       Default is github-pr-check.
     default: 'github-pr-check'
+  rubocop_version:
+    description: 'Rubocop version'
+    required: true
+  rubocop_rails_version:
+    description: 'Rubocop rails version'
+    required: true
+  rubocop_performance_version:
+    description: 'Rubocop performance version'
+    required: true
+  rubocop_rspec_version:
+    description: 'Rubocop rspec version'
+    required: true
+  rubocop_i18n_version:
+    description: 'Rubocop i18n version'
+    required: true
+  rubocop_rake_version:
+    description: 'Rubocop rake version'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -28,6 +46,12 @@ runs:
     - ${{ inputs.tool_name }}
     - ${{ inputs.level }}
     - ${{ inputs.reporter }}
+    - ${{ inputs.rubocop_version }}
+    - ${{ inputs.rubocop_rails_version }}
+    - ${{ inputs.rubocop_performance_version }}
+    - ${{ inputs.rubocop_rspec_version }}
+    - ${{ inputs.rubocop_i18n_version }}
+    - ${{ inputs.rubocop_rake_version }}
 branding:
   icon: 'check-circle'
   color: 'red'
