@@ -21,22 +21,22 @@ inputs:
     default: 'github-pr-check'
   rubocop_version:
     description: 'Rubocop version'
-    required: true
+    required: false
   rubocop_rails_version:
     description: 'Rubocop rails version'
-    required: true
+    required: false
   rubocop_performance_version:
     description: 'Rubocop performance version'
-    required: true
+    required: false
   rubocop_rspec_version:
     description: 'Rubocop rspec version'
-    required: true
+    required: false
   rubocop_i18n_version:
     description: 'Rubocop i18n version'
-    required: true
+    required: false
   rubocop_rake_version:
     description: 'Rubocop rake version'
-    required: true
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
