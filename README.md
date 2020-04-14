@@ -75,7 +75,7 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review # Default is github-pr-check
-          rubocop_version: 
+          rubocop_version: 0.80.1
           rubocop_extensions: rubocop-performance:1.5.1 rubocop-minitest
 ```
 
