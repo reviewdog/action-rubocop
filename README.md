@@ -49,27 +49,14 @@ The default is `github-pr-check`.
 
 ### `rubocop_version`
 
-Set rubocop version. 
+Optional. Set rubocop version. 
+By default install latest version.
 
-### `rubocop_rails_version`
+### `rubocop_extensions`
 
-Set rubocop rails version.
+Optional. Set list of rubocop extensions with versions. 
 
-### `rubocop_performance_version`
-
-Set rubocop performance version.
-
-### `rubocop_rspec_version`
-
-Set rubocop rspec version.
-
-### `rubocop_i18n_version`
-
-Set rubocop i18n version.
-
-### `rubocop_rake_version`
-
-Set rubocop rake version.
+By default install rubocop-rails rubocop-performance rubocop-rspec rubocop-i18n rubocop-rake with latest versions.
 
 ## Example usage
 
@@ -88,6 +75,8 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review # Default is github-pr-check
+          rubocop_version: 
+          rubocop_extensions: rubocop-performance:1.5.1 rubocop-minitest
 ```
 
 ## Sponsor
