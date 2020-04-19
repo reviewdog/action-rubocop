@@ -56,7 +56,7 @@ By default install latest version.
 
 Optional. Set list of rubocop extensions with versions. 
 
-By default install rubocop-rails rubocop-performance rubocop-rspec rubocop-i18n rubocop-rake with latest versions.
+By default install `rubocop-rails`, `rubocop-performance`, `rubocop-rspec`, `rubocop-i18n`, `rubocop-rake` with latest versions.
 
 ## Example usage
 
