@@ -32,6 +32,11 @@ With `reporter: github-pr-review` a comment is added to the Pull Request Convers
 
 Optional. rubocop flags. (rubocop `<rubocop_flags>`)
 
+### `rubocop_version`
+
+Optional. Set rubocop version. 
+By default install latest version.
+
 ### `tool_name`
 
 Optional. Tool name to use for reviewdog reporter. Useful when running multiple
@@ -47,16 +52,11 @@ It's same as `-level` flag of reviewdog.
 Optional. Reporter of reviewdog command [`github-pr-check`, `github-pr-review`].
 The default is `github-pr-check`.
 
-### `rubocop_version`
-
-Optional. Set rubocop version. 
-By default install latest version.
-
 ### `rubocop_extensions`
 
 Optional. Set list of rubocop extensions with versions. 
 
-By default install rubocop-rails rubocop-performance rubocop-rspec rubocop-i18n rubocop-rake with latest versions.
+By default with `rubocop-rails rubocop-performance rubocop-rspec rubocop-i18n rubocop-rake`
 
 ## Example usage
 

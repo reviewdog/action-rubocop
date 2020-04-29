@@ -23,6 +23,7 @@ inputs:
     description: 'Rubocop version'
   rubocop_extensions:
     description: 'Rubocop extensions'
+    default: 'rubocop-rails rubocop-performance rubocop-rspec rubocop-i18n rubocop-rake'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -33,11 +34,7 @@ runs:
     - ${{ inputs.level }}
     - ${{ inputs.reporter }}
     - ${{ inputs.rubocop_version }}
-    - ${{ inputs.rubocop_rails_version }}
-    - ${{ inputs.rubocop_performance_version }}
-    - ${{ inputs.rubocop_rspec_version }}
-    - ${{ inputs.rubocop_i18n_version }}
-    - ${{ inputs.rubocop_rake_version }}
+    - ${{ inputs.rubocop_extensions }}
 branding:
   icon: 'check-circle'
   color: 'red'
