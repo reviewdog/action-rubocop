@@ -14,4 +14,10 @@ gem install -N rubocop $(version $INPUT_RUBOCOP_VERSION)
 echo $INPUT_RUBOCOP_EXTENSIONS | xargs gem install -N
 
 rubocop ${INPUT_RUBOCOP_FLAGS} \
-  | reviewdog -f=rubocop -name="${INPUT_TOOL_NAME}" -reporter="${INPUT_REPORTER}" -level="${INPUT_LEVEL}"
+  | reviewdog -f=rubocop \
+      -name="${INPUT_TOOL_NAME}" \
+      -reporter="${INPUT_REPORTER}" \
+      -filter-mode="${INPUT_FILTER_MODE}" \
+      -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
+      -level="${INPUT_LEVEL}" \
+      ${INPUT_REVIEWDOG_FLAGS}
