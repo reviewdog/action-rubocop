@@ -1,8 +1,11 @@
 # GitHub Action: Run rubocop with reviewdog 🐶
 
-![](https://github.com/reviewdog/action-rubocop/workflows/CI/badge.svg)
-![](https://img.shields.io/github/license/reviewdog/action-rubocop)
-![](https://img.shields.io/github/v/release/reviewdog/action-rubocop)
+[![](https://github.com/reviewdog/action-rubocop/workflows/CI/badge.svg)](https://github.com/reviewdog/action-rubocop/actions?query=workflow%3ACI)
+[![](https://img.shields.io/github/license/reviewdog/action-rubocop)](./LICENSE)
+[![depup](https://github.com/reviewdog/action-rubocop/workflows/depup/badge.svg)](https://github.com/reviewdog/action-rubocop/actions?query=workflow%3Adepup)
+[![release](https://github.com/reviewdog/action-rubocop/workflows/release/badge.svg)](https://github.com/reviewdog/action-rubocop/actions?query=workflow%3Arelease)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/reviewdog/action-rubocop?logo=github&sort=semver)](https://github.com/reviewdog/action-rubocop/releases)
+[![action-bumpr supported](https://img.shields.io/badge/bumpr-supported-ff69b4?logo=github&link=https://github.com/haya14busa/action-bumpr)](https://github.com/haya14busa/action-bumpr)
 
 This action runs [rubocop](https://github.com/rubocop-hq/rubocop) with
 [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve
