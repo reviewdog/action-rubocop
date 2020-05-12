@@ -55,6 +55,20 @@ It's same as `-level` flag of reviewdog.
 Optional. Reporter of reviewdog command [`github-pr-check`, `github-pr-review`].
 The default is `github-pr-check`.
 
+### `filter_mode`
+
+Optional. Filtering mode for the reviewdog command [`added`, `diff_context`, `file`, `nofilter`].
+Default is `added`.
+
+### `fail_on_error`
+
+Optional.  Exit code for reviewdog when errors are found [`true`, `false`]
+Default is `false`.
+
+### `reviewdog_flags`
+
+Optional. Additional reviewdog flags
+
 ### `rubocop_extensions`
 
 Optional. Set list of rubocop extensions with versions. 
