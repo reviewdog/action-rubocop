@@ -31,14 +31,20 @@ With `reporter: github-pr-review` a comment is added to the Pull Request Convers
 
 **Required**. Must be in form of `github_token: ${{ secrets.github_token }}`'.
 
-### `rubocop_flags`
-
-Optional. rubocop flags. (rubocop `<rubocop_flags>`)
-
 ### `rubocop_version`
 
 Optional. Set rubocop version. 
 By default install latest version.
+
+### `rubocop_extensions`
+
+Optional. Set list of rubocop extensions with versions. 
+
+By default install `rubocop-rails`, `rubocop-performance`, `rubocop-rspec`, `rubocop-i18n`, `rubocop-rake` with latest versions.
+
+### `rubocop_flags`
+
+Optional. Rubocop flags. (rubocop `<rubocop_flags>`)
 
 ### `tool_name`
 
@@ -67,13 +73,7 @@ Default is `false`.
 
 ### `reviewdog_flags`
 
-Optional. Additional reviewdog flags
-
-### `rubocop_extensions`
-
-Optional. Set list of rubocop extensions with versions. 
-
-By default install `rubocop-rails`, `rubocop-performance`, `rubocop-rspec`, `rubocop-i18n`, `rubocop-rake` with latest versions.
+Optional. Additional reviewdog flags.
 
 ## Example usage
 
@@ -90,10 +90,10 @@ jobs:
       - name: rubocop
         uses: reviewdog/action-rubocop@v1
         with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review # Default is github-pr-check
           rubocop_version: 0.80.1
           rubocop_extensions: rubocop-performance:1.5.1 rubocop-minitest
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review # Default is github-pr-check
 ```
 
 ## Sponsor

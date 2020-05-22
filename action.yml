@@ -5,8 +5,13 @@ inputs:
   github_token:
     description: 'GITHUB_TOKEN.'
     required: true
+  rubocop_version:
+    description: 'Rubocop version'
+  rubocop_extensions:
+    description: 'Rubocop extensions'
+    default: 'rubocop-rails rubocop-performance rubocop-rspec rubocop-i18n rubocop-rake'
   rubocop_flags:
-    description: 'rubocop flags. (rubocop <rubocop_flags>)'
+    description: 'Rubocop flags. (rubocop <rubocop_flags>)'
     default: ''
   tool_name:
     description: 'Tool name to use for reviewdog reporter'
@@ -32,22 +37,20 @@ inputs:
   reviewdog_flags:
     description: 'Additional reviewdog flags'
     default: ''
-  rubocop_version:
-    description: 'Rubocop version'
-  rubocop_extensions:
-    description: 'Rubocop extensions'
-    default: 'rubocop-rails rubocop-performance rubocop-rspec rubocop-i18n rubocop-rake'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.github_token }}
+    - ${{ inputs.rubocop_version }}
+    - ${{ inputs.rubocop_extensions }}
     - ${{ inputs.rubocop_flags }}
     - ${{ inputs.tool_name }}
     - ${{ inputs.level }}
     - ${{ inputs.reporter }}
-    - ${{ inputs.rubocop_version }}
-    - ${{ inputs.rubocop_extensions }}
+    - ${{ inputs.filter_mode }}
+    - ${{ inputs.fail_on_error }}
+    - ${{ inputs.reviewdog_flags }}
 branding:
   icon: 'check-circle'
   color: 'red'
