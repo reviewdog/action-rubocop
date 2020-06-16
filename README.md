@@ -75,6 +75,10 @@ Default is `false`.
 
 Optional. Additional reviewdog flags.
 
+### `workdir`
+
+Optional. The directory from which to look for and run Rubocop. Default '.'
+
 ## Example usage
 
 ```yml
