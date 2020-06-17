@@ -37,6 +37,9 @@ inputs:
   reviewdog_flags:
     description: 'Additional reviewdog flags'
     default: ''
+  workdir:
+    description: "The directory from which to look for and run Rubocop. Default '.'"
+    default: '.'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -51,6 +54,7 @@ runs:
     - ${{ inputs.filter_mode }}
     - ${{ inputs.fail_on_error }}
     - ${{ inputs.reviewdog_flags }}
+    - ${{ inputs.workdir }}
 branding:
   icon: 'check-circle'
   color: 'red'
