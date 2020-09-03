@@ -33,14 +33,24 @@ With `reporter: github-pr-review` a comment is added to the Pull Request Convers
 
 ### `rubocop_version`
 
-Optional. Set rubocop version. 
-By default install latest version.
+Optional. Set rubocop version. Possible values:
+* empty or omit: install latest version
+* `latest`: install version from Gemfile (`Gemfile.lock` should be presented, otherwise it will fallback to latest bundler version)
+* version (e.g. `0.90.0`): install said version
 
 ### `rubocop_extensions`
 
 Optional. Set list of rubocop extensions with versions. 
 
 By default install `rubocop-rails`, `rubocop-performance`, `rubocop-rspec`, `rubocop-i18n`, `rubocop-rake` with latest versions.
+Provide desired version delimited by `:` (e.g. `rubocop-rails:1.7.1`)
+
+Possible version values:
+* empty or omit (`rubocop-rails rubocop-rspec`): install latest version
+* `rubocop-rails:latest rubocop-rspec:latest`: install version from Gemfile (`Gemfile.lock` should be presented, otherwise it will fallback to latest bundler version)
+* version (e.g. `rubocop-rails:1.7.1 rubocop-rspec:2.0.0`): install said version
+
+You can combine `latest`, fixed and latest bundle version as you want to.
 
 ### `rubocop_flags`
 
