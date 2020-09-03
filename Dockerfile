@@ -3,7 +3,8 @@ FROM ruby:2.6-alpine
 ENV REVIEWDOG_VERSION v0.10.2
 
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
-RUN apk add --update --no-cache build-base git grep
+RUN apk add --update --no-cache build-base git
+RUN apk add --update --no-cache grep=3.4-r0
 RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b /usr/local/bin/ $REVIEWDOG_VERSION
 
 COPY entrypoint.sh /entrypoint.sh
