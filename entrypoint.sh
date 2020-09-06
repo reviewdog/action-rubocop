@@ -9,8 +9,8 @@ cd "${GITHUB_WORKSPACE}/${INPUT_WORKDIR}" || exit 1
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-# if 'latest' rubocop version selected
-if [[ $INPUT_RUBOCOP_VERSION = "latest" ]]; then
+# if 'gemfile' rubocop version selected
+if [[ $INPUT_RUBOCOP_VERSION = "gemfile" ]]; then
   # if Gemfile.lock is here
   if [[ -f 'Gemfile.lock' ]]; then
     # grep for rubocop version
@@ -20,7 +20,11 @@ if [[ $INPUT_RUBOCOP_VERSION = "latest" ]]; then
     # left it empty otherwise, so no version will be passed
     if [[ -n "$RUBOCOP_GEMFILE_VERSION" ]]; then
       RUBOCOP_VERSION=$RUBOCOP_GEMFILE_VERSION
+      else
+        printf "Cannot get the rubocop's version from Gemfile.lock. The latest version will be installed."
     fi
+    else
+      printf 'Gemfile.lock not found. The latest version will be installed.'
   fi
   else
     # set desired rubocop version
@@ -35,8 +39,8 @@ for extension in $INPUT_RUBOCOP_EXTENSIONS; do
   INPUT_RUBOCOP_EXTENSION_NAME=`echo $extension | grep -oP '^rubocop-\w*'`
   INPUT_RUBOCOP_EXTENSION_VERSION=`echo $extension | grep -oP '^rubocop-\w*:\K(.*)'`
 
-  # if version is 'latest'
-  if [[ $INPUT_RUBOCOP_EXTENSION_VERSION = "latest" ]]; then
+  # if version is 'gemfile'
+  if [[ $INPUT_RUBOCOP_EXTENSION_VERSION = "gemfile" ]]; then
     # if Gemfile.lock is here
     if [[ -f 'Gemfile.lock' ]]; then
       # grep for rubocop extension version
@@ -46,7 +50,11 @@ for extension in $INPUT_RUBOCOP_EXTENSIONS; do
       # left it empty otherwise, so no version will be passed
       if [[ -n "$RUBOCOP_EXTENSION_GEMFILE_VERSION" ]]; then
         RUBOCOP_EXTENSION_VERSION=$RUBOCOP_EXTENSION_GEMFILE_VERSION
+        else
+          printf "Cannot get the rubocop extension version from Gemfile.lock. The latest version will be installed."
       fi
+      else
+        printf 'Gemfile.lock not found. The latest version will be installed.'
     fi
   else
     # set desired rubocop extension version
