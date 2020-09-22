@@ -5,7 +5,7 @@ ENV REVIEWDOG_VERSION v0.10.2
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 
 # hadolint ignore=DL3018
-RUN apk add --update --no-cache build-base git grep
+RUN apk add --update --no-cache build-base git grep pcre-tools
 RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b /usr/local/bin/ $REVIEWDOG_VERSION
 
 COPY entrypoint.sh /entrypoint.sh
