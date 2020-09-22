@@ -68,10 +68,12 @@ for extension in $INPUT_RUBOCOP_EXTENSIONS; do
     RUBOCOP_EXTENSION_VERSION_FLAG="--version ${RUBOCOP_EXTENSION_VERSION}"
   fi
 
-  gem install -N "${INPUT_RUBOCOP_EXTENSION_NAME}" "${RUBOCOP_EXTENSION_VERSION_FLAG}"
+  # shellcheck disable=SC2086
+  gem install -N "${INPUT_RUBOCOP_EXTENSION_NAME}" ${RUBOCOP_EXTENSION_VERSION_FLAG}
 done
 
-rubocop "${INPUT_RUBOCOP_FLAGS}" \
+# shellcheck disable=SC2086
+rubocop ${INPUT_RUBOCOP_FLAGS} \
   | reviewdog -f=rubocop \
       -name="${INPUT_TOOL_NAME}" \
       -reporter="${INPUT_REPORTER}" \
