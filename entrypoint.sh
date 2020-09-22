@@ -36,8 +36,8 @@ gem install -N rubocop $(version $RUBOCOP_VERSION)
 # Traverse over list of rubocop extensions
 for extension in $INPUT_RUBOCOP_EXTENSIONS; do
   # grep for name and version
-  INPUT_RUBOCOP_EXTENSION_NAME=`echo $extension | grep -oP '^rubocop-\w*'`
-  INPUT_RUBOCOP_EXTENSION_VERSION=`echo $extension | grep -oP '^rubocop-\w*:\K(.*)'`
+  INPUT_RUBOCOP_EXTENSION_NAME=`echo $extension |awk 'BEGIN { FS = ":" } ; { print $1 }')`
+  INPUT_RUBOCOP_EXTENSION_VERSION=`echo $extension |awk 'BEGIN { FS = ":" } ; { print $2 }')`
 
   # if version is 'gemfile'
   if [[ $INPUT_RUBOCOP_EXTENSION_VERSION = "gemfile" ]]; then
@@ -61,7 +61,14 @@ for extension in $INPUT_RUBOCOP_EXTENSIONS; do
     RUBOCOP_EXTENSION_VERSION=$INPUT_RUBOCOP_EXTENSION_VERSION
   fi
 
-  gem install -N $INPUT_RUBOCOP_EXTENSION_NAME $(version $RUBOCOP_EXTENSION_VERSION)
+  # Handle extensions with no version qualifier
+  if [ -z "${RUBOCOP_EXTENSION_VERSION}" ]; then
+    unset RUBOCOP_EXTENSION_VERSION_FLAG
+  else
+    RUBOCOP_EXTENSION_VERSION_FLAG="--version ${RUBOCOP_EXTENSION_VERSION}"
+  fi
+
+  gem install -N ${INPUT_RUBOCOP_EXTENSION_NAME} ${RUBOCOP_EXTENSION_VERSION_FLAG}
 done
 
 rubocop ${INPUT_RUBOCOP_FLAGS} \
