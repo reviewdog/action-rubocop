@@ -77,6 +77,8 @@ fi
 command="rubocop"
 
 if [ "${INPUT_BUNDLED_RUBOCOP}" = "true" ]; then
+  gem install -N bundler
+  bundle install
   command="bundle exec rubocop"
 fi
 
