@@ -40,6 +40,9 @@ inputs:
   workdir:
     description: "The directory from which to look for and run Rubocop. Default '.'"
     default: '.'
+  bundled_rubocop:
+    description: 'Enable if rubocop is bundled within another gem'
+    default: 'false'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -55,6 +58,7 @@ runs:
     - ${{ inputs.fail_on_error }}
     - ${{ inputs.reviewdog_flags }}
     - ${{ inputs.workdir }}
+    - ${{ inputs.bundled_rubocop }}
 branding:
   icon: 'check-circle'
   color: 'red'
