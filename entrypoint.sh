@@ -80,4 +80,4 @@ rubocop ${INPUT_RUBOCOP_FLAGS} \
       -filter-mode="${INPUT_FILTER_MODE}" \
       -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
       -level="${INPUT_LEVEL}" \
-      "${INPUT_REVIEWDOG_FLAGS}"
+      ${INPUT_REVIEWDOG_FLAGS}
