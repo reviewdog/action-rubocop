@@ -7,6 +7,8 @@ RUN cd /tmp && bundle
 
 FROM ruby:3.0.0-alpine
 
+RUN apk add --update --no-cache git
+
 ENV REVIEWDOG_VERSION v0.11.0
 
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
