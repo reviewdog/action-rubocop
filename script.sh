@@ -5,10 +5,17 @@ version() {
   fi
 }
 
-cd "${GITHUB_WORKSPACE}/${INPUT_WORKDIR}" || exit 1
-
+cd "${GITHUB_WORKSPACE}" || exit
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
+TEMP_PATH="$(mktemp -d)"
+PATH="${TEMP_PATH}:$PATH"
+
+echo '::group::🐶 Installing reviewdog ... https://github.com/reviewdog/reviewdog'
+curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b "${TEMP_PATH}" "${REVIEWDOG_VERSION}" 2>&1
+echo '::endgroup::'
+
+echo '::group:: Installing rubocop with extensions ... https://github.com/rubocop-hq/rubocop'
 # if 'gemfile' rubocop version selected
 if [ "${INPUT_RUBOCOP_VERSION}" = "gemfile" ]; then
   # if Gemfile.lock is here
@@ -71,7 +78,11 @@ for extension in $INPUT_RUBOCOP_EXTENSIONS; do
   # shellcheck disable=SC2086
   gem install -N "${INPUT_RUBOCOP_EXTENSION_NAME}" ${RUBOCOP_EXTENSION_VERSION_FLAG}
 done
+echo '::endgroup::'
 
+export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
+
+echo '::group:: Running rubocop with reviewdog 🐶 ...'
 # shellcheck disable=SC2086
 rubocop ${INPUT_RUBOCOP_FLAGS} \
   | reviewdog -f=rubocop \
@@ -81,3 +92,4 @@ rubocop ${INPUT_RUBOCOP_FLAGS} \
       -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
       -level="${INPUT_LEVEL}" \
       ${INPUT_REVIEWDOG_FLAGS}
+echo '::endgroup::'
