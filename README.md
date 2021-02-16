@@ -1,6 +1,5 @@
 # GitHub Action: Run rubocop with reviewdog 🐶
 
-[![](https://github.com/reviewdog/action-rubocop/workflows/CI/badge.svg)](https://github.com/reviewdog/action-rubocop/actions?query=workflow%3ACI)
 [![](https://img.shields.io/github/license/reviewdog/action-rubocop)](./LICENSE)
 [![depup](https://github.com/reviewdog/action-rubocop/workflows/depup/badge.svg)](https://github.com/reviewdog/action-rubocop/actions?query=workflow%3Adepup)
 [![release](https://github.com/reviewdog/action-rubocop/workflows/release/badge.svg)](https://github.com/reviewdog/action-rubocop/actions?query=workflow%3Arelease)

@@ -3,7 +3,7 @@ description: '🐶 Run rubocop with reviewdog on pull requests to improve code r
 author: 'mgrachev (reviewdog)'
 inputs:
   github_token:
-    description: 'GITHUB_TOKEN.'
+    description: 'GITHUB_TOKEN'
     required: true
   rubocop_version:
     description: 'Rubocop version'
@@ -41,20 +41,25 @@ inputs:
     description: "The directory from which to look for and run Rubocop. Default '.'"
     default: '.'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.github_token }}
-    - ${{ inputs.rubocop_version }}
-    - ${{ inputs.rubocop_extensions }}
-    - ${{ inputs.rubocop_flags }}
-    - ${{ inputs.tool_name }}
-    - ${{ inputs.level }}
-    - ${{ inputs.reporter }}
-    - ${{ inputs.filter_mode }}
-    - ${{ inputs.fail_on_error }}
-    - ${{ inputs.reviewdog_flags }}
-    - ${{ inputs.workdir }}
+  using: 'composite'
+  steps:
+    - run: $GITHUB_ACTION_PATH/script.sh
+      shell: sh
+      env:
+        REVIEWDOG_VERSION: v0.11.0
+        # INPUT_<VARIABLE_NAME> is not available in Composite run steps
+        # https://github.community/t/input-variable-name-is-not-available-in-composite-run-steps/127611
+        INPUT_GITHUB_TOKEN: ${{ inputs.github_token }}
+        INPUT_RUBOCOP_VERSION: ${{ inputs.rubocop_version }}
+        INPUT_RUBOCOP_EXTENSIONS: ${{ inputs.rubocop_extensions }}
+        INPUT_RUBOCOP_FLAGS: ${{ inputs.rubocop_flags }}
+        INPUT_TOOL_NAME: ${{ inputs.tool_name }}
+        INPUT_LEVEL: ${{ inputs.level }}
+        INPUT_REPORTER: ${{ inputs.reporter }}
+        INPUT_FILTER_MODE: ${{ inputs.filter_mode }}
+        INPUT_FAIL_ON_ERROR: ${{ inputs.fail_on_error }}
+        INPUT_REVIEWDOG_FLAGS: ${{ inputs.reviewdog_flags }}
+        INPUT_WORKDIR: ${{ inputs.workdir }}
 branding:
   icon: 'check-circle'
   color: 'red'
