@@ -100,11 +100,14 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v1
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.0
       - name: rubocop
         uses: reviewdog/action-rubocop@v1
         with:
-          rubocop_version: 0.80.1
-          rubocop_extensions: rubocop-performance:1.5.1 rubocop-minitest
+          rubocop_version: gemfile
+          rubocop_extensions: rubocop-rails:gemfile rubocop-rspec:gemfile
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review # Default is github-pr-check
 ```
