@@ -92,4 +92,7 @@ rubocop ${INPUT_RUBOCOP_FLAGS} \
       -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
       -level="${INPUT_LEVEL}" \
       ${INPUT_REVIEWDOG_FLAGS}
+
+reviewdog_rc=$?
 echo '::endgroup::'
+exit $reviewdog_rc
