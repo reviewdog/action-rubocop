@@ -21,7 +21,7 @@ if [ "${INPUT_RUBOCOP_VERSION}" = "gemfile" ]; then
   # if Gemfile.lock is here
   if [ -f 'Gemfile.lock' ]; then
     # grep for rubocop version
-    RUBOCOP_GEMFILE_VERSION=$(pcregrep -o '^\s{4}rubocop\s\(\K.*(?=\))' Gemfile.lock)
+    RUBOCOP_GEMFILE_VERSION=$(ruby -ne 'print $& if /^\s{4}rubocop\s\(\K.*(?=\))/' Gemfile.lock)
 
     # if rubocop version found, then pass it to the gem install
     # left it empty otherwise, so no version will be passed
@@ -51,7 +51,7 @@ for extension in $INPUT_RUBOCOP_EXTENSIONS; do
     # if Gemfile.lock is here
     if [ -f 'Gemfile.lock' ]; then
       # grep for rubocop extension version
-      RUBOCOP_EXTENSION_GEMFILE_VERSION=$(pcregrep -o "^\s{4}$INPUT_RUBOCOP_EXTENSION_NAME\s\(\K.*(?=\))" Gemfile.lock)
+      RUBOCOP_EXTENSION_GEMFILE_VERSION=$(ruby -ne "print $& if /^\s{4}$INPUT_RUBOCOP_EXTENSION_NAME\s\(\K.*(?=\))/" Gemfile.lock)
 
       # if rubocop extension version found, then pass it to the gem install
       # left it empty otherwise, so no version will be passed
