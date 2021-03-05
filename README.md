@@ -6,7 +6,7 @@
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/reviewdog/action-rubocop?logo=github&sort=semver)](https://github.com/reviewdog/action-rubocop/releases)
 [![action-bumpr supported](https://img.shields.io/badge/bumpr-supported-ff69b4?logo=github&link=https://github.com/haya14busa/action-bumpr)](https://github.com/haya14busa/action-bumpr)
 
-This action runs [rubocop](https://github.com/rubocop-hq/rubocop) with
+This action runs [rubocop](https://github.com/rubocop/rubocop) with
 [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve
 code review experience.
 
@@ -39,7 +39,7 @@ Optional. Set rubocop version. Possible values:
 
 ### `rubocop_extensions`
 
-Optional. Set list of rubocop extensions with versions. 
+Optional. Set list of rubocop extensions with versions.
 
 By default install `rubocop-rails`, `rubocop-performance`, `rubocop-rspec`, `rubocop-i18n`, `rubocop-rake` with latest versions.
 Provide desired version delimited by `:` (e.g. `rubocop-rails:1.7.1`)
@@ -116,7 +116,7 @@ jobs:
 
 <p>
   <a href="https://evrone.com/?utm_source=action-rubocop">
-    <img src="https://www.mgrachev.com/assets/static/evrone-sponsored-300.png" 
+    <img src="https://www.mgrachev.com/assets/static/evrone-sponsored-300.png"
       alt="Sponsored by Evrone" width="210">
   </a>
 </p>

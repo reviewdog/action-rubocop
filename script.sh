@@ -15,7 +15,7 @@ echo '::group::🐶 Installing reviewdog ... https://github.com/reviewdog/review
 curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b "${TEMP_PATH}" "${REVIEWDOG_VERSION}" 2>&1
 echo '::endgroup::'
 
-echo '::group:: Installing rubocop with extensions ... https://github.com/rubocop-hq/rubocop'
+echo '::group:: Installing rubocop with extensions ... https://github.com/rubocop/rubocop'
 # if 'gemfile' rubocop version selected
 if [ "${INPUT_RUBOCOP_VERSION}" = "gemfile" ]; then
   # if Gemfile.lock is here
