@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 version() {
   if [ -n "$1" ]; then
     echo "-v $1"
