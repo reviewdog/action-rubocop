@@ -43,6 +43,9 @@ inputs:
   skip_install:
     description: "Do not install Rubocop or its extensions. Default: false"
     default: 'false'
+  use_bundler:
+    description: "Run Rubocop with bundle exec. Default: false"
+    default: false
 runs:
   using: 'composite'
   steps:
@@ -64,6 +67,7 @@ runs:
         INPUT_REVIEWDOG_FLAGS: ${{ inputs.reviewdog_flags }}
         INPUT_WORKDIR: ${{ inputs.workdir }}
         INPUT_SKIP_INSTALL: ${{ inputs.skip_install }}
+        INPUT_USE_BUNDLER: ${{ inputs.use_bundler }}
 branding:
   icon: 'check-circle'
   color: 'red'

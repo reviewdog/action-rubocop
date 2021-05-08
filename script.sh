@@ -84,9 +84,15 @@ fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
+if [ "${INPUT_USE_BUNDLER}" = "false" ]; then
+  BUNDLE_EXEC=""
+else
+  BUNDLE_EXEC="bundle exec "
+fi
+
 echo '::group:: Running rubocop with reviewdog 🐶 ...'
 # shellcheck disable=SC2086
-rubocop ${INPUT_RUBOCOP_FLAGS} \
+${BUNDLE_EXEC}rubocop ${INPUT_RUBOCOP_FLAGS} \
   | reviewdog -f=rubocop \
       -name="${INPUT_TOOL_NAME}" \
       -reporter="${INPUT_REPORTER}" \
