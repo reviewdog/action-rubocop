@@ -1,0 +1,24 @@
+name: CI
+on: [pull_request]
+jobs:
+  dotenv-linter:
+    name: runner / rubocop
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: test/using_bundler
+    env:
+      BUNDLE_GEMFILE: ${{ github.workspace }}/test/using_bundler/Gemfile
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+          bundler-cache: true
+      - name: rubocop with skip install and using bundler
+        uses: ./
+        with:
+          github_token: ${{ secrets.github_token }}
+          skip_install: 'true'
+          use_bundler: 'true'
+      - run: test "$(bundle exec rubocop --version)" == "1.18.1"
