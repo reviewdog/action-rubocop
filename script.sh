@@ -84,8 +84,8 @@ export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
 echo '::group:: Running rubocop with reviewdog 🐶 ...'
 # shellcheck disable=SC2086
-rubocop ${INPUT_RUBOCOP_FLAGS} \
-  | reviewdog -f=rubocop \
+rubocop ${INPUT_RUBOCOP_FLAGS} --require ${GITHUB_ACTION_PATH}/rdjson_formatter/rdjson_formatter.rb --format RdjsonFormatter \
+  | reviewdog -f=rdjson \
       -name="${INPUT_TOOL_NAME}" \
       -reporter="${INPUT_REPORTER}" \
       -filter-mode="${INPUT_FILTER_MODE}" \
