@@ -1,0 +1,18 @@
+
+name: test
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '3.0.2'
+      - run: gem install rubocop
+      - name: Test rdjson_formatter
+        run: ./rdjson_formatter/test.sh
