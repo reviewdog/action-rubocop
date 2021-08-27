@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 # https://docs.rubocop.org/rubocop/formatters.html
+# rubocop:disable Metrics/AbcSize, Metrics/MethodLength
 class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
   def started(_target_files)
     @rdjson = {
@@ -36,24 +39,22 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
         range: {
           start: {
             line: offense.location.begin.line,
-            column: offense.location.begin.column + 1,
+            column: offense.location.begin.column + 1
           },
           end: {
             line: offense.location.end.line,
-            column: offense.location.end.column + 1,
-          },
+            column: offense.location.end.column + 1
+          }
         }
       },
       severity: convert_severity(offense.severity),
       code: {
-        value: code,
+        value: code
       },
-      original_output: offense.to_s,
+      original_output: offense.to_s
     }
 
-    if offense.corrector
-      diagnostic[:suggestions] = build_suggestions(offense)
-    end
+    diagnostic[:suggestions] = build_suggestions(offense) if offense.corrector
 
     diagnostic
   end
@@ -68,12 +69,12 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
         range: {
           start: {
             line: range.begin.line,
-            column: range.begin.column + 1, # rubocop is 0-origin, reviewdog is 1-origin
+            column: range.begin.column + 1 # rubocop is 0-origin, reviewdog is 1-origin
           },
           end: {
             line: range.end.line,
-            column: range.end.column + 1,
-          },
+            column: range.end.column + 1
+          }
         },
         text: text
       }
@@ -117,3 +118,4 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
     end
   end
 end
+# rubocop:enable Metrics/AbcSize, Metrics/MethodLength
