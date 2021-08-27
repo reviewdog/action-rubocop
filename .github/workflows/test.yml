@@ -1,5 +1,4 @@
-
-name: test
+name: Test rdjson_formatter
 on:
   push:
     branches:
@@ -15,4 +14,4 @@ jobs:
           ruby-version: '3.0.2'
       - run: gem install rubocop
       - name: Test rdjson_formatter
-        run: ./rdjson_formatter/test.sh
+        run: ./test/rdjson_formatter/test.sh

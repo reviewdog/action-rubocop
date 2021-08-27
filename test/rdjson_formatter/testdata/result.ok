@@ -7,7 +7,7 @@
     {
       "message": "Missing frozen string literal comment.",
       "location": {
-        "path": "testdata/correctable_offenses.rb",
+        "path": "test/rdjson_formatter/testdata/correctable_offenses.rb",
         "range": {
           "start": {
             "line": 1,
@@ -43,7 +43,7 @@
     {
       "message": "Space missing after comma.",
       "location": {
-        "path": "testdata/correctable_offenses.rb",
+        "path": "test/rdjson_formatter/testdata/correctable_offenses.rb",
         "range": {
           "start": {
             "line": 1,
@@ -79,7 +79,7 @@
     {
       "message": "Unnecessary spacing detected.",
       "location": {
-        "path": "testdata/correctable_offenses.rb",
+        "path": "test/rdjson_formatter/testdata/correctable_offenses.rb",
         "range": {
           "start": {
             "line": 2,
@@ -115,7 +115,7 @@
     {
       "message": "Surrounding space missing for operator `+`.",
       "location": {
-        "path": "testdata/correctable_offenses.rb",
+        "path": "test/rdjson_formatter/testdata/correctable_offenses.rb",
         "range": {
           "start": {
             "line": 2,
@@ -151,7 +151,7 @@
     {
       "message": "Unnecessary spacing detected.",
       "location": {
-        "path": "testdata/correctable_offenses.rb",
+        "path": "test/rdjson_formatter/testdata/correctable_offenses.rb",
         "range": {
           "start": {
             "line": 2,
@@ -187,7 +187,7 @@
     {
       "message": "Do not use semicolons to terminate expressions.",
       "location": {
-        "path": "testdata/correctable_offenses.rb",
+        "path": "test/rdjson_formatter/testdata/correctable_offenses.rb",
         "range": {
           "start": {
             "line": 2,
@@ -223,7 +223,7 @@
     {
       "message": "Redundant `return` detected.",
       "location": {
-        "path": "testdata/correctable_offenses.rb",
+        "path": "test/rdjson_formatter/testdata/correctable_offenses.rb",
         "range": {
           "start": {
             "line": 3,
@@ -259,7 +259,7 @@
     {
       "message": "Unnecessary spacing detected.",
       "location": {
-        "path": "testdata/correctable_offenses.rb",
+        "path": "test/rdjson_formatter/testdata/correctable_offenses.rb",
         "range": {
           "start": {
             "line": 3,
@@ -293,30 +293,9 @@
       ]
     },
     {
-      "message": "Missing top-level class documentation comment.",
-      "location": {
-        "path": "testdata/not_correctable_offenses.rb",
-        "range": {
-          "start": {
-            "line": 3,
-            "column": 1
-          },
-          "end": {
-            "line": 3,
-            "column": 6
-          }
-        }
-      },
-      "severity": "UNKNOWN_SEVERITY",
-      "code": {
-        "value": "Style/Documentation"
-      },
-      "original_output": "C:  3:  1: Style/Documentation: Missing top-level class documentation comment."
-    },
-    {
       "message": "Method parameter must be at least 3 characters long.",
       "location": {
-        "path": "testdata/not_correctable_offenses.rb",
+        "path": "test/rdjson_formatter/testdata/not_correctable_offenses.rb",
         "range": {
           "start": {
             "line": 4,
@@ -337,7 +316,7 @@
     {
       "message": "Method parameter must be at least 3 characters long.",
       "location": {
-        "path": "testdata/not_correctable_offenses.rb",
+        "path": "test/rdjson_formatter/testdata/not_correctable_offenses.rb",
         "range": {
           "start": {
             "line": 4,
@@ -358,7 +337,7 @@
     {
       "message": "Useless assignment to variable - `c`.",
       "location": {
-        "path": "testdata/not_correctable_offenses.rb",
+        "path": "test/rdjson_formatter/testdata/not_correctable_offenses.rb",
         "range": {
           "start": {
             "line": 5,
