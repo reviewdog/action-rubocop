@@ -53,7 +53,7 @@ You can combine `gemfile`, fixed and latest bundle version as you want to.
 
 ### `rubocop_flags`
 
-Optional. Rubocop flags. (rubocop `<rubocop_flags>`)
+Optional. Rubocop flags. (rubocop `<rubocop_flags>`).
 
 ### `tool_name`
 
@@ -77,7 +77,7 @@ Default is `added`.
 
 ### `fail_on_error`
 
-Optional.  Exit code for reviewdog when errors are found [`true`, `false`]
+Optional.  Exit code for reviewdog when errors are found [`true`, `false`].
 Default is `false`.
 
 ### `reviewdog_flags`
@@ -86,7 +86,15 @@ Optional. Additional reviewdog flags.
 
 ### `workdir`
 
-Optional. The directory from which to look for and run Rubocop. Default '.'
+Optional. The directory from which to look for and run Rubocop. Default `.`.
+
+### `skip_install`
+
+Optional. Do not install Rubocop or its extensions. Default: `false`.
+
+### `use_bundler`
+
+Optional. Run Rubocop with bundle exec. Default: `false`.
 
 ## Example usage
 
@@ -104,7 +112,7 @@ jobs:
         with:
           ruby-version: 3.0.0
       - name: rubocop
-        uses: reviewdog/action-rubocop@v1
+        uses: reviewdog/action-rubocop@v2
         with:
           rubocop_version: gemfile
           rubocop_extensions: rubocop-rails:gemfile rubocop-rspec:gemfile
@@ -115,9 +123,9 @@ jobs:
 ## Sponsor
 
 <p>
-  <a href="https://evrone.com/?utm_source=action-rubocop">
-    <img src="https://www.mgrachev.com/assets/static/evrone-sponsored-300.png"
-      alt="Sponsored by Evrone" width="210">
+  <a href="https://evrone.com/?utm_source=github&utm_campaign=action-rubocop">
+    <img src="https://www.mgrachev.com/assets/static/sponsored_by_evrone.svg?sanitize=true"
+      alt="Sponsored by Evrone">
   </a>
 </p>
 
