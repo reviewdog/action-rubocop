@@ -1,0 +1,359 @@
+{
+  "source": {
+    "name": "rubocop",
+    "url": "https://rubocop.org/"
+  },
+  "diagnostics": [
+    {
+      "message": "Missing frozen string literal comment.",
+      "location": {
+        "path": "test/rdjson_formatter/testdata/correctable_offenses.rb",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 2
+          }
+        }
+      },
+      "severity": "UNKNOWN_SEVERITY",
+      "code": {
+        "value": "Style/FrozenStringLiteralComment"
+      },
+      "original_output": "C:  1:  1: Style/FrozenStringLiteralComment: Missing frozen string literal comment.",
+      "suggestions": [
+        {
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 1
+            }
+          },
+          "text": "# frozen_string_literal: true\n"
+        }
+      ]
+    },
+    {
+      "message": "Space missing after comma.",
+      "location": {
+        "path": "test/rdjson_formatter/testdata/correctable_offenses.rb",
+        "range": {
+          "start": {
+            "line": 1,
+            "column": 12
+          },
+          "end": {
+            "line": 1,
+            "column": 13
+          }
+        }
+      },
+      "severity": "UNKNOWN_SEVERITY",
+      "code": {
+        "value": "Layout/SpaceAfterComma"
+      },
+      "original_output": "C:  1: 12: Layout/SpaceAfterComma: Space missing after comma.",
+      "suggestions": [
+        {
+          "range": {
+            "start": {
+              "line": 1,
+              "column": 12
+            },
+            "end": {
+              "line": 1,
+              "column": 13
+            }
+          },
+          "text": ", "
+        }
+      ]
+    },
+    {
+      "message": "Unnecessary spacing detected.",
+      "location": {
+        "path": "test/rdjson_formatter/testdata/correctable_offenses.rb",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 4
+          },
+          "end": {
+            "line": 2,
+            "column": 7
+          }
+        }
+      },
+      "severity": "UNKNOWN_SEVERITY",
+      "code": {
+        "value": "Layout/ExtraSpacing"
+      },
+      "original_output": "C:  2:  4: Layout/ExtraSpacing: Unnecessary spacing detected.",
+      "suggestions": [
+        {
+          "range": {
+            "start": {
+              "line": 2,
+              "column": 4
+            },
+            "end": {
+              "line": 2,
+              "column": 7
+            }
+          },
+          "text": ""
+        }
+      ]
+    },
+    {
+      "message": "Surrounding space missing for operator `+`.",
+      "location": {
+        "path": "test/rdjson_formatter/testdata/correctable_offenses.rb",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 13
+          },
+          "end": {
+            "line": 2,
+            "column": 14
+          }
+        }
+      },
+      "severity": "UNKNOWN_SEVERITY",
+      "code": {
+        "value": "Layout/SpaceAroundOperators"
+      },
+      "original_output": "C:  2: 13: Layout/SpaceAroundOperators: Surrounding space missing for operator `+`.",
+      "suggestions": [
+        {
+          "range": {
+            "start": {
+              "line": 2,
+              "column": 13
+            },
+            "end": {
+              "line": 2,
+              "column": 17
+            }
+          },
+          "text": " + "
+        }
+      ]
+    },
+    {
+      "message": "Unnecessary spacing detected.",
+      "location": {
+        "path": "test/rdjson_formatter/testdata/correctable_offenses.rb",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 14
+          },
+          "end": {
+            "line": 2,
+            "column": 16
+          }
+        }
+      },
+      "severity": "UNKNOWN_SEVERITY",
+      "code": {
+        "value": "Layout/ExtraSpacing"
+      },
+      "original_output": "C:  2: 14: Layout/ExtraSpacing: Unnecessary spacing detected.",
+      "suggestions": [
+        {
+          "range": {
+            "start": {
+              "line": 2,
+              "column": 14
+            },
+            "end": {
+              "line": 2,
+              "column": 16
+            }
+          },
+          "text": ""
+        }
+      ]
+    },
+    {
+      "message": "Do not use semicolons to terminate expressions.",
+      "location": {
+        "path": "test/rdjson_formatter/testdata/correctable_offenses.rb",
+        "range": {
+          "start": {
+            "line": 2,
+            "column": 20
+          },
+          "end": {
+            "line": 2,
+            "column": 21
+          }
+        }
+      },
+      "severity": "UNKNOWN_SEVERITY",
+      "code": {
+        "value": "Style/Semicolon"
+      },
+      "original_output": "C:  2: 20: Style/Semicolon: Do not use semicolons to terminate expressions.",
+      "suggestions": [
+        {
+          "range": {
+            "start": {
+              "line": 2,
+              "column": 20
+            },
+            "end": {
+              "line": 2,
+              "column": 21
+            }
+          },
+          "text": ""
+        }
+      ]
+    },
+    {
+      "message": "Redundant `return` detected.",
+      "location": {
+        "path": "test/rdjson_formatter/testdata/correctable_offenses.rb",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 3
+          },
+          "end": {
+            "line": 3,
+            "column": 9
+          }
+        }
+      },
+      "severity": "UNKNOWN_SEVERITY",
+      "code": {
+        "value": "Style/RedundantReturn"
+      },
+      "original_output": "C:  3:  3: Style/RedundantReturn: Redundant `return` detected.",
+      "suggestions": [
+        {
+          "range": {
+            "start": {
+              "line": 3,
+              "column": 3
+            },
+            "end": {
+              "line": 3,
+              "column": 11
+            }
+          },
+          "text": ""
+        }
+      ]
+    },
+    {
+      "message": "Unnecessary spacing detected.",
+      "location": {
+        "path": "test/rdjson_formatter/testdata/correctable_offenses.rb",
+        "range": {
+          "start": {
+            "line": 3,
+            "column": 9
+          },
+          "end": {
+            "line": 3,
+            "column": 10
+          }
+        }
+      },
+      "severity": "UNKNOWN_SEVERITY",
+      "code": {
+        "value": "Layout/ExtraSpacing"
+      },
+      "original_output": "C:  3:  9: Layout/ExtraSpacing: Unnecessary spacing detected.",
+      "suggestions": [
+        {
+          "range": {
+            "start": {
+              "line": 3,
+              "column": 9
+            },
+            "end": {
+              "line": 3,
+              "column": 10
+            }
+          },
+          "text": ""
+        }
+      ]
+    },
+    {
+      "message": "Method parameter must be at least 3 characters long.",
+      "location": {
+        "path": "test/rdjson_formatter/testdata/not_correctable_offenses.rb",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 15
+          },
+          "end": {
+            "line": 4,
+            "column": 16
+          }
+        }
+      },
+      "severity": "UNKNOWN_SEVERITY",
+      "code": {
+        "value": "Naming/MethodParameterName"
+      },
+      "original_output": "C:  4: 15: Naming/MethodParameterName: Method parameter must be at least 3 characters long."
+    },
+    {
+      "message": "Method parameter must be at least 3 characters long.",
+      "location": {
+        "path": "test/rdjson_formatter/testdata/not_correctable_offenses.rb",
+        "range": {
+          "start": {
+            "line": 4,
+            "column": 18
+          },
+          "end": {
+            "line": 4,
+            "column": 19
+          }
+        }
+      },
+      "severity": "UNKNOWN_SEVERITY",
+      "code": {
+        "value": "Naming/MethodParameterName"
+      },
+      "original_output": "C:  4: 18: Naming/MethodParameterName: Method parameter must be at least 3 characters long."
+    },
+    {
+      "message": "Useless assignment to variable - `c`.",
+      "location": {
+        "path": "test/rdjson_formatter/testdata/not_correctable_offenses.rb",
+        "range": {
+          "start": {
+            "line": 5,
+            "column": 5
+          },
+          "end": {
+            "line": 5,
+            "column": 6
+          }
+        }
+      },
+      "severity": "UNKNOWN_SEVERITY",
+      "code": {
+        "value": "Lint/UselessAssignment"
+      },
+      "original_output": "W:  5:  5: Lint/UselessAssignment: Useless assignment to variable - `c`."
+    }
+  ]
+}
