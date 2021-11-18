@@ -16,6 +16,8 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
 
   def file_finished(file, offenses)
     offenses.each do |offense|
+      next if offense.location == RuboCop::Cop::Offense::NO_LOCATION
+
       @rdjson[:diagnostics] << build_diagnostic(file, offense)
     end
   end
