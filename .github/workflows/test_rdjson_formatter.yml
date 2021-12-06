@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0.2'
+          ruby-version: 3.0.2
       - run: gem install rubocop
       - name: Test rdjson_formatter
         run: ./test/rdjson_formatter/test.sh
