@@ -98,6 +98,8 @@ Optional. Run Rubocop with bundle exec. Default: `false`.
 
 ## Example usage
 
+You can create [RuboCop Configuration](https://docs.rubocop.org/rubocop/configuration.html) and this action uses that config too.
+
 ```yml
 name: reviewdog
 on: [pull_request]
