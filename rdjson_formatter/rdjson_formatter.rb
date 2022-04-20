@@ -56,7 +56,7 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
       original_output: offense.to_s
     }
 
-    diagnostic[:suggestions] = build_suggestions(offense) if offense.corrector
+    diagnostic[:suggestions] = build_suggestions(offense) if offense.correctable?
 
     diagnostic
   end
