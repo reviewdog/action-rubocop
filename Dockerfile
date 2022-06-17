@@ -1,5 +1,7 @@
 FROM ruby:3.0.0-alpine as builder
 
+RUN apk info --all git
+
 RUN apk add --update --no-cache git cmake make g++ pcre-tools openssl-dev
 
 COPY Gemfile* /tmp/
@@ -7,9 +9,7 @@ RUN cd /tmp && bundle
 
 FROM ruby:3.0.0-alpine
 
-RUN apk add --update --no-cache git=1:2.9.3-1
-
-RUN git --version
+RUN apk add --update --no-cache git
 
 ENV REVIEWDOG_VERSION v0.11.0
 
