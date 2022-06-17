@@ -7,7 +7,7 @@ RUN cd /tmp && bundle
 
 FROM ruby:3.0.0-alpine
 
-RUN apk add --update --no-cache git
+RUN apk add --update --no-cache git=1:2.9.3-1
 
 RUN git --version
 
