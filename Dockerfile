@@ -9,6 +9,8 @@ FROM ruby:3.0.0-alpine
 
 RUN apk add --update --no-cache git
 
+RUN git --version
+
 ENV REVIEWDOG_VERSION v0.11.0
 
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
