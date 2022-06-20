@@ -103,6 +103,9 @@ You can create [RuboCop Configuration](https://docs.rubocop.org/rubocop/configur
 ```yml
 name: reviewdog
 on: [pull_request]
+permissions:
+  contents: read
+  pull-requests: write
 jobs:
   rubocop:
     name: runner / rubocop
