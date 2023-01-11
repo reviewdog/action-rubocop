@@ -23,7 +23,7 @@
       "code": {
         "value": "Style/FrozenStringLiteralComment"
       },
-      "original_output": "C:  1:  1: Style/FrozenStringLiteralComment: Missing frozen string literal comment.",
+      "original_output": "test/rdjson_formatter/testdata/correctable_offenses.rb:1:1: C: Style/FrozenStringLiteralComment: Missing frozen string literal comment.",
       "suggestions": [
         {
           "range": {
@@ -59,7 +59,7 @@
       "code": {
         "value": "Layout/SpaceAfterComma"
       },
-      "original_output": "C:  1: 12: Layout/SpaceAfterComma: Space missing after comma.",
+      "original_output": "test/rdjson_formatter/testdata/correctable_offenses.rb:1:12: C: Layout/SpaceAfterComma: Space missing after comma.",
       "suggestions": [
         {
           "range": {
@@ -95,7 +95,7 @@
       "code": {
         "value": "Layout/ExtraSpacing"
       },
-      "original_output": "C:  2:  4: Layout/ExtraSpacing: Unnecessary spacing detected.",
+      "original_output": "test/rdjson_formatter/testdata/correctable_offenses.rb:2:4: C: Layout/ExtraSpacing: Unnecessary spacing detected.",
       "suggestions": [
         {
           "range": {
@@ -131,7 +131,7 @@
       "code": {
         "value": "Layout/SpaceAroundOperators"
       },
-      "original_output": "C:  2: 13: Layout/SpaceAroundOperators: Surrounding space missing for operator `+`.",
+      "original_output": "test/rdjson_formatter/testdata/correctable_offenses.rb:2:13: C: Layout/SpaceAroundOperators: Surrounding space missing for operator `+`.",
       "suggestions": [
         {
           "range": {
@@ -167,7 +167,7 @@
       "code": {
         "value": "Layout/ExtraSpacing"
       },
-      "original_output": "C:  2: 14: Layout/ExtraSpacing: Unnecessary spacing detected.",
+      "original_output": "test/rdjson_formatter/testdata/correctable_offenses.rb:2:14: C: Layout/ExtraSpacing: Unnecessary spacing detected.",
       "suggestions": [
         {
           "range": {
@@ -203,7 +203,7 @@
       "code": {
         "value": "Style/Semicolon"
       },
-      "original_output": "C:  2: 20: Style/Semicolon: Do not use semicolons to terminate expressions.",
+      "original_output": "test/rdjson_formatter/testdata/correctable_offenses.rb:2:20: C: Style/Semicolon: Do not use semicolons to terminate expressions.",
       "suggestions": [
         {
           "range": {
@@ -239,7 +239,7 @@
       "code": {
         "value": "Style/RedundantReturn"
       },
-      "original_output": "C:  3:  3: Style/RedundantReturn: Redundant `return` detected.",
+      "original_output": "test/rdjson_formatter/testdata/correctable_offenses.rb:3:3: C: Style/RedundantReturn: Redundant `return` detected.",
       "suggestions": [
         {
           "range": {
@@ -275,7 +275,7 @@
       "code": {
         "value": "Layout/ExtraSpacing"
       },
-      "original_output": "C:  3:  9: Layout/ExtraSpacing: Unnecessary spacing detected.",
+      "original_output": "test/rdjson_formatter/testdata/correctable_offenses.rb:3:9: C: Layout/ExtraSpacing: Unnecessary spacing detected.",
       "suggestions": [
         {
           "range": {
@@ -311,7 +311,7 @@
       "code": {
         "value": "Naming/MethodParameterName"
       },
-      "original_output": "C:  4: 15: Naming/MethodParameterName: Method parameter must be at least 3 characters long."
+      "original_output": "test/rdjson_formatter/testdata/not_correctable_offenses.rb:4:15: C: Naming/MethodParameterName: Method parameter must be at least 3 characters long."
     },
     {
       "message": "Method parameter must be at least 3 characters long.",
@@ -332,7 +332,7 @@
       "code": {
         "value": "Naming/MethodParameterName"
       },
-      "original_output": "C:  4: 18: Naming/MethodParameterName: Method parameter must be at least 3 characters long."
+      "original_output": "test/rdjson_formatter/testdata/not_correctable_offenses.rb:4:18: C: Naming/MethodParameterName: Method parameter must be at least 3 characters long."
     },
     {
       "message": "Useless assignment to variable - `c`.",
@@ -353,7 +353,7 @@
       "code": {
         "value": "Lint/UselessAssignment"
       },
-      "original_output": "W:  5:  5: Lint/UselessAssignment: Useless assignment to variable - `c`."
+      "original_output": "test/rdjson_formatter/testdata/not_correctable_offenses.rb:5:5: W: Lint/UselessAssignment: Useless assignment to variable - `c`."
     }
   ]
 }
