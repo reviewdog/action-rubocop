@@ -28,15 +28,15 @@ if [ "${INPUT_SKIP_INSTALL}" = "false" ]; then
       # left it empty otherwise, so no version will be passed
       if [ -n "$RUBOCOP_GEMFILE_VERSION" ]; then
         RUBOCOP_VERSION=$RUBOCOP_GEMFILE_VERSION
-        else
-          printf "Cannot get the rubocop's version from Gemfile.lock. The latest version will be installed."
-      fi
       else
-        printf 'Gemfile.lock not found. The latest version will be installed.'
-    fi
+        printf "Cannot get the rubocop's version from Gemfile.lock. The latest version will be installed."
+      fi
     else
-      # set desired rubocop version
-      RUBOCOP_VERSION=$INPUT_RUBOCOP_VERSION
+      printf 'Gemfile.lock not found. The latest version will be installed.'
+    fi
+  else
+    # set desired rubocop version
+    RUBOCOP_VERSION=$INPUT_RUBOCOP_VERSION
   fi
 
   gem install -N rubocop --version "${RUBOCOP_VERSION}"
@@ -58,11 +58,11 @@ if [ "${INPUT_SKIP_INSTALL}" = "false" ]; then
         # left it empty otherwise, so no version will be passed
         if [ -n "$RUBOCOP_EXTENSION_GEMFILE_VERSION" ]; then
           RUBOCOP_EXTENSION_VERSION=$RUBOCOP_EXTENSION_GEMFILE_VERSION
-          else
-            printf "Cannot get the rubocop extension version from Gemfile.lock. The latest version will be installed."
-        fi
         else
-          printf 'Gemfile.lock not found. The latest version will be installed.'
+          printf "Cannot get the rubocop extension version from Gemfile.lock. The latest version will be installed."
+        fi
+      else
+        printf 'Gemfile.lock not found. The latest version will be installed.'
       fi
     else
       # set desired rubocop extension version
