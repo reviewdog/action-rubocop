@@ -3,6 +3,8 @@
 # https://docs.rubocop.org/rubocop/formatters.html
 # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
 class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
+  include RuboCop::PathUtil
+
   def started(_target_files)
     @rdjson = {
       source: {
@@ -53,7 +55,7 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
       code: {
         value: code
       },
-      original_output: offense.to_s
+      original_output: build_original_output(file, offense)
     }
 
     diagnostic[:suggestions] = build_suggestions(offense) if offense.correctable? && offense.corrector
@@ -118,6 +120,20 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
     rescue ArgumentError
       path
     end
+  end
+
+  # @param [String] file
+  # @param [RuboCop::Cop::Offense] offense
+  # @return [String]
+  def build_original_output(file, offense)
+    format(
+      '%<path>s:%<line>d:%<column>d: %<severity>s: %<message>s',
+      path: smart_path(file),
+      line: offense.line,
+      column: offense.real_column,
+      severity: offense.severity.code,
+      message: offense.message
+    )
   end
 end
 # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
