@@ -93,6 +93,7 @@ fi
 echo '::group:: Running rubocop with reviewdog 🐶 ...'
 # shellcheck disable=SC2086
 ${BUNDLE_EXEC}rubocop ${INPUT_RUBOCOP_FLAGS} --require ${GITHUB_ACTION_PATH}/rdjson_formatter/rdjson_formatter.rb --format RdjsonFormatter \
+  2> /dev/null
   | reviewdog -f=rdjson \
       -name="${INPUT_TOOL_NAME}" \
       -reporter="${INPUT_REPORTER}" \
