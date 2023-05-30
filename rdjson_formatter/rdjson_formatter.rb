@@ -91,12 +91,12 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
   # @param [Symbol] severity
   # @return [String]
   def convert_severity(severity)
-    case severity
-    when :info
+    case severity.to_s
+    when 'info'
       'INFO'
-    when :warning
+    when 'warning'
       'WARNING'
-    when :error
+    when 'error'
       'ERROR'
     else
       'UNKNOWN_SEVERITY'
