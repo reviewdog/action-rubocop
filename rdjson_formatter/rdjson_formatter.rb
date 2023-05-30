@@ -22,6 +22,8 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
 
       @rdjson[:diagnostics] << build_diagnostic(file, offense)
     end
+
+    @rdjson[:severity] = overall_severity(offenses)
   end
 
   def finished(_inspected_files)
@@ -29,6 +31,24 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
   end
 
   private
+
+  def overall_severity(offenses)
+    if offenses.any? { |o| o.severity >= minimum_severity_to_fail }
+      'ERROR'
+    elsif offenses.all? { |o| convert_severity(o.severity) == 'INFO' }
+      'INFO'
+    else
+      'WARNING'
+    end
+  end
+
+  def minimum_severity_to_fail
+    @minimum_severity_to_fail ||= begin
+      # Unless given explicitly as `fail_level`, `:info` severity offenses do not fail
+      name = options.fetch(:fail_level, :refactor)
+      RuboCop::Cop::Severity.new(name)
+    end
+  end
 
   # @param [String] file
   # @param [RuboCop::Cop::Offense] offense
