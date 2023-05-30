@@ -92,7 +92,7 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
   # @return [String]
   def convert_severity(severity)
     case severity.to_s
-    when 'info'
+    when 'info', 'refactor', 'convention'
       'INFO'
     when 'warning'
       'WARNING'
