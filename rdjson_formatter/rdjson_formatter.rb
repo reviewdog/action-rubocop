@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # https://docs.rubocop.org/rubocop/formatters.html
-# rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+# rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Metrics/ClassLength
 class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
   include RuboCop::PathUtil
 
@@ -156,4 +156,4 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
     )
   end
 end
-# rubocop:enable Metrics/AbcSize, Metrics/MethodLength
+# rubocop:enable Metrics/AbcSize, Metrics/MethodLength, Metrics/ClassLength
