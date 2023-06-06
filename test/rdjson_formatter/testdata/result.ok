@@ -353,7 +353,22 @@
       "code": {
         "value": "Lint/UselessAssignment"
       },
-      "original_output": "test/rdjson_formatter/testdata/not_correctable_offenses.rb:5:5: W: Lint/UselessAssignment: Useless assignment to variable - `c`."
+      "original_output": "test/rdjson_formatter/testdata/not_correctable_offenses.rb:5:5: W: Lint/UselessAssignment: Useless assignment to variable - `c`.",
+      "suggestions": [
+        {
+          "range": {
+            "start": {
+              "line": 5,
+              "column": 5
+            },
+            "end": {
+              "line": 5,
+              "column": 14
+            }
+          },
+          "text": "a + b"
+        }
+      ]
     }
   ],
   "severity": "ERROR"
