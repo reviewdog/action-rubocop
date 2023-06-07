@@ -19,7 +19,7 @@
           }
         }
       },
-      "severity": "UNKNOWN_SEVERITY",
+      "severity": "INFO",
       "code": {
         "value": "Style/FrozenStringLiteralComment"
       },
@@ -55,7 +55,7 @@
           }
         }
       },
-      "severity": "UNKNOWN_SEVERITY",
+      "severity": "INFO",
       "code": {
         "value": "Layout/SpaceAfterComma"
       },
@@ -91,7 +91,7 @@
           }
         }
       },
-      "severity": "UNKNOWN_SEVERITY",
+      "severity": "INFO",
       "code": {
         "value": "Layout/ExtraSpacing"
       },
@@ -127,7 +127,7 @@
           }
         }
       },
-      "severity": "UNKNOWN_SEVERITY",
+      "severity": "INFO",
       "code": {
         "value": "Layout/SpaceAroundOperators"
       },
@@ -163,7 +163,7 @@
           }
         }
       },
-      "severity": "UNKNOWN_SEVERITY",
+      "severity": "INFO",
       "code": {
         "value": "Layout/ExtraSpacing"
       },
@@ -199,7 +199,7 @@
           }
         }
       },
-      "severity": "UNKNOWN_SEVERITY",
+      "severity": "INFO",
       "code": {
         "value": "Style/Semicolon"
       },
@@ -235,7 +235,7 @@
           }
         }
       },
-      "severity": "UNKNOWN_SEVERITY",
+      "severity": "INFO",
       "code": {
         "value": "Style/RedundantReturn"
       },
@@ -271,7 +271,7 @@
           }
         }
       },
-      "severity": "UNKNOWN_SEVERITY",
+      "severity": "INFO",
       "code": {
         "value": "Layout/ExtraSpacing"
       },
@@ -307,7 +307,7 @@
           }
         }
       },
-      "severity": "UNKNOWN_SEVERITY",
+      "severity": "INFO",
       "code": {
         "value": "Naming/MethodParameterName"
       },
@@ -328,7 +328,7 @@
           }
         }
       },
-      "severity": "UNKNOWN_SEVERITY",
+      "severity": "INFO",
       "code": {
         "value": "Naming/MethodParameterName"
       },
@@ -349,11 +349,27 @@
           }
         }
       },
-      "severity": "UNKNOWN_SEVERITY",
+      "severity": "WARNING",
       "code": {
         "value": "Lint/UselessAssignment"
       },
-      "original_output": "test/rdjson_formatter/testdata/not_correctable_offenses.rb:5:5: W: Lint/UselessAssignment: Useless assignment to variable - `c`."
+      "original_output": "test/rdjson_formatter/testdata/not_correctable_offenses.rb:5:5: W: Lint/UselessAssignment: Useless assignment to variable - `c`.",
+      "suggestions": [
+        {
+          "range": {
+            "start": {
+              "line": 5,
+              "column": 5
+            },
+            "end": {
+              "line": 5,
+              "column": 14
+            }
+          },
+          "text": "a + b"
+        }
+      ]
     }
-  ]
+  ],
+  "severity": "ERROR"
 }

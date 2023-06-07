@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # https://docs.rubocop.org/rubocop/formatters.html
-# rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+# rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Metrics/ClassLength
 class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
   include RuboCop::PathUtil
 
@@ -22,6 +22,8 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
 
       @rdjson[:diagnostics] << build_diagnostic(file, offense)
     end
+
+    @rdjson[:severity] = overall_severity(offenses)
   end
 
   def finished(_inspected_files)
@@ -29,6 +31,24 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
   end
 
   private
+
+  def overall_severity(offenses)
+    if offenses.any? { |o| o.severity >= minimum_severity_to_fail }
+      'ERROR'
+    elsif offenses.all? { |o| convert_severity(o.severity) == 'INFO' }
+      'INFO'
+    else
+      'WARNING'
+    end
+  end
+
+  def minimum_severity_to_fail
+    @minimum_severity_to_fail ||= begin
+      # Unless given explicitly as `fail_level`, `:info` severity offenses do not fail
+      name = options.fetch(:fail_level, :refactor)
+      RuboCop::Cop::Severity.new(name)
+    end
+  end
 
   # @param [String] file
   # @param [RuboCop::Cop::Offense] offense
@@ -91,12 +111,12 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
   # @param [Symbol] severity
   # @return [String]
   def convert_severity(severity)
-    case severity
-    when :info
+    case severity.to_s
+    when 'info', 'refactor', 'convention'
       'INFO'
-    when :warning
+    when 'warning'
       'WARNING'
-    when :error
+    when 'error'
       'ERROR'
     else
       'UNKNOWN_SEVERITY'
@@ -136,4 +156,4 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
     )
   end
 end
-# rubocop:enable Metrics/AbcSize, Metrics/MethodLength
+# rubocop:enable Metrics/AbcSize, Metrics/MethodLength, Metrics/ClassLength
