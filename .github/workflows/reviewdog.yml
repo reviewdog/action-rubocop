@@ -6,7 +6,7 @@ jobs:
     name: check / misspell
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3
       - name: misspell
         uses: reviewdog/action-misspell@v1
         with:
@@ -19,7 +19,7 @@ jobs:
     name: runner / shellcheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3
       - name: shellcheck
         uses: reviewdog/action-shellcheck@v1
         with:
@@ -33,7 +33,7 @@ jobs:
     name: check / yamllint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3
       - name: yamllint
         uses: reviewdog/action-yamllint@v1
         with:
