@@ -33,9 +33,10 @@ With `reporter: github-pr-review` a comment is added to the Pull Request Convers
 ### `rubocop_version`
 
 Optional. Set rubocop version. Possible values:
-* empty or omit: install latest version
-* `gemfile`: install version from Gemfile (`Gemfile.lock` should be presented, otherwise it will fallback to latest bundler version)
-* version (e.g. `0.90.0`): install said version
+
+- empty or omit: install latest version
+- `gemfile`: install version from Gemfile (`Gemfile.lock` should be presented, otherwise it will fallback to latest bundler version)
+- version (e.g. `0.90.0`): install said version
 
 ### `rubocop_extensions`
 
@@ -45,9 +46,10 @@ By default install `rubocop-rails`, `rubocop-performance`, `rubocop-rspec`, `rub
 Provide desired version delimited by `:` (e.g. `rubocop-rails:1.7.1`)
 
 Possible version values:
-* empty or omit (`rubocop-rails rubocop-rspec`): install latest version
-* `rubocop-rails:gemfile rubocop-rspec:gemfile`: install version from Gemfile (`Gemfile.lock` should be presented, otherwise it will fallback to latest bundler version)
-* version (e.g. `rubocop-rails:1.7.1 rubocop-rspec:2.0.0`): install said version
+
+- empty or omit (`rubocop-rails rubocop-rspec`): install latest version
+- `rubocop-rails:gemfile rubocop-rspec:gemfile`: install version from Gemfile (`Gemfile.lock` should be presented, otherwise it will fallback to latest bundler version)
+- version (e.g. `rubocop-rails:1.7.1 rubocop-rspec:2.0.0`): install said version
 
 You can combine `gemfile`, fixed and latest bundle version as you want to.
 
@@ -77,7 +79,7 @@ Default is `added`.
 
 ### `fail_on_error`
 
-Optional.  Exit code for reviewdog when errors are found [`true`, `false`].
+Optional. Exit code for reviewdog when errors are found [`true`, `false`].
 Default is `false`.
 
 ### `reviewdog_flags`
@@ -112,7 +114,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0.0
