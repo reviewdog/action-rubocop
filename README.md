@@ -100,11 +100,24 @@ Optional. Run Rubocop with bundle exec. Default: `false`.
 
 ## Example usage
 
-You can create [RuboCop Configuration](https://docs.rubocop.org/rubocop/configuration.html) and this action uses that config too.
+This action will use your [RuboCop Configuration](https://docs.rubocop.org/rubocop/configuration.html) automatically.
+
+In your `Gemfile`, ensure all Rubocop gems are in a named (e.g. rubocop) group:
+
+```ruby
+group :development, :rubocop do
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  # ...
+end
+```
+
+Create the following workflow. The `BUNDLE_ONLY` environment variable will tell Bundler to only install the specified group.
 
 ```yml
 name: reviewdog
-on: [pull_request]
+on:
+  pull_request:
 permissions:
   contents: read
   pull-requests: write
@@ -112,18 +125,19 @@ jobs:
   rubocop:
     name: runner / rubocop
     runs-on: ubuntu-latest
+    env:
+      BUNDLE_ONLY: rubocop
     steps:
-      - name: Check out code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.0
-      - name: rubocop
-        uses: reviewdog/action-rubocop@v2
+          ruby-version: '3.3'
+          bundler-cache: true
+      - uses: reviewdog/action-rubocop@v2
         with:
-          rubocop_version: gemfile
-          rubocop_extensions: rubocop-rails:gemfile rubocop-rspec:gemfile
           reporter: github-pr-review # Default is github-pr-check
+          skip_install: true
+          use_bundler: true
 ```
 
 ## Sponsor
