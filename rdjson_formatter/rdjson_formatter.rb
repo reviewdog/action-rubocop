@@ -136,7 +136,7 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
     base_path = Dir.pwd
 
     begin
-      Pathname.new(File.expand_path(path)).relative_path_from(base_path).to_s
+      Pathname.new(File.expand_path(path)).relative_path_from(Pathname.new(base_path)).to_s
     rescue ArgumentError
       path
     end
