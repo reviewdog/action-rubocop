@@ -19,6 +19,9 @@ inputs:
   level:
     description: 'Report level for reviewdog [info,warning,error]'
     default: 'error'
+  only_changed:
+    description: "Run Rubocop only on changed (and added) files, for speedup [`true`, `false`]"
+    default: 'false'
   reporter:
     description: |
       Reporter of reviewdog command [github-pr-check,github-check,github-pr-review].
@@ -61,6 +64,7 @@ runs:
         INPUT_FILTER_MODE: ${{ inputs.filter_mode }}
         INPUT_GITHUB_TOKEN: ${{ inputs.github_token }}
         INPUT_LEVEL: ${{ inputs.level }}
+        INPUT_ONLY_CHANGED: ${{ inputs.only_changed }}
         INPUT_REPORTER: ${{ inputs.reporter }}
         INPUT_REVIEWDOG_FLAGS: ${{ inputs.reviewdog_flags }}
         INPUT_RUBOCOP_EXTENSIONS: ${{ inputs.rubocop_extensions }}
@@ -70,6 +74,8 @@ runs:
         INPUT_TOOL_NAME: ${{ inputs.tool_name }}
         INPUT_USE_BUNDLER: ${{ inputs.use_bundler }}
         INPUT_WORKDIR: ${{ inputs.workdir }}
+        BASE_REF: ${{ github.event.pull_request.base.sha }}
+        HEAD_REF: ${{ github.sha }}
 branding:
   icon: 'check-circle'
   color: 'red'

@@ -47,6 +47,11 @@ Default is `added`.
 Optional. Report level for reviewdog [`info`, `warning`, `error`].
 It's same as `-level` flag of reviewdog.
 
+### `only_changed`
+
+Optional. Run Rubocop only on changed (and added) files, for speedup [`true`, `false`].
+Default: `false`.
+
 ### `reporter`
 
 Optional. Reporter of reviewdog command [`github-pr-check`, `github-check`, `github-pr-review`].
