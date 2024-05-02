@@ -2,20 +2,19 @@ name: 'Run rubocop with reviewdog'
 description: '🐶 Run rubocop with reviewdog on pull requests to improve code review experience.'
 author: 'mgrachev (reviewdog)'
 inputs:
+  fail_on_error:
+    description: |
+      Exit code for reviewdog when errors are found [true,false]
+      Default is `false`.
+    default: 'false'
+  filter_mode:
+    description: |
+      Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
+      Default is added.
+    default: 'added'
   github_token:
     description: 'GITHUB_TOKEN'
     default: ${{ github.token }}
-  rubocop_version:
-    description: 'Rubocop version'
-  rubocop_extensions:
-    description: 'Rubocop extensions'
-    default: 'rubocop-rails rubocop-performance rubocop-rspec rubocop-i18n rubocop-rake'
-  rubocop_flags:
-    description: 'Rubocop flags. (rubocop <rubocop_flags>)'
-    default: ''
-  tool_name:
-    description: 'Tool name to use for reviewdog reporter'
-    default: 'rubocop'
   level:
     description: 'Report level for reviewdog [info,warning,error]'
     default: 'error'
@@ -24,28 +23,29 @@ inputs:
       Reporter of reviewdog command [github-pr-check,github-check,github-pr-review].
       Default is github-pr-check.
     default: 'github-pr-check'
-  filter_mode:
-    description: |
-      Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
-      Default is added.
-    default: 'added'
-  fail_on_error:
-    description: |
-      Exit code for reviewdog when errors are found [true,false]
-      Default is `false`.
-    default: 'false'
   reviewdog_flags:
     description: 'Additional reviewdog flags'
     default: ''
-  workdir:
-    description: "The directory from which to look for and run Rubocop. Default '.'"
-    default: '.'
+  rubocop_extensions:
+    description: 'Rubocop extensions'
+    default: 'rubocop-rails rubocop-performance rubocop-rspec rubocop-i18n rubocop-rake'
+  rubocop_flags:
+    description: 'Rubocop flags. (rubocop <rubocop_flags>)'
+    default: ''
+  rubocop_version:
+    description: 'Rubocop version'
   skip_install:
     description: "Do not install Rubocop or its extensions. Default: `false`"
     default: 'false'
+  tool_name:
+    description: 'Tool name to use for reviewdog reporter'
+    default: 'rubocop'
   use_bundler:
     description: "Run Rubocop with bundle exec. Default: `false`"
     default: 'false'
+  workdir:
+    description: "The directory from which to look for and run Rubocop. Default '.'"
+    default: '.'
 runs:
   using: 'composite'
   steps:
@@ -55,19 +55,19 @@ runs:
         REVIEWDOG_VERSION: v0.17.4
         # INPUT_<VARIABLE_NAME> is not available in Composite run steps
         # https://github.community/t/input-variable-name-is-not-available-in-composite-run-steps/127611
+        INPUT_FAIL_ON_ERROR: ${{ inputs.fail_on_error }}
+        INPUT_FILTER_MODE: ${{ inputs.filter_mode }}
         INPUT_GITHUB_TOKEN: ${{ inputs.github_token }}
-        INPUT_RUBOCOP_VERSION: ${{ inputs.rubocop_version }}
-        INPUT_RUBOCOP_EXTENSIONS: ${{ inputs.rubocop_extensions }}
-        INPUT_RUBOCOP_FLAGS: ${{ inputs.rubocop_flags }}
-        INPUT_TOOL_NAME: ${{ inputs.tool_name }}
         INPUT_LEVEL: ${{ inputs.level }}
         INPUT_REPORTER: ${{ inputs.reporter }}
-        INPUT_FILTER_MODE: ${{ inputs.filter_mode }}
-        INPUT_FAIL_ON_ERROR: ${{ inputs.fail_on_error }}
         INPUT_REVIEWDOG_FLAGS: ${{ inputs.reviewdog_flags }}
-        INPUT_WORKDIR: ${{ inputs.workdir }}
+        INPUT_RUBOCOP_EXTENSIONS: ${{ inputs.rubocop_extensions }}
+        INPUT_RUBOCOP_FLAGS: ${{ inputs.rubocop_flags }}
+        INPUT_RUBOCOP_VERSION: ${{ inputs.rubocop_version }}
         INPUT_SKIP_INSTALL: ${{ inputs.skip_install }}
+        INPUT_TOOL_NAME: ${{ inputs.tool_name }}
         INPUT_USE_BUNDLER: ${{ inputs.use_bundler }}
+        INPUT_WORKDIR: ${{ inputs.workdir }}
 branding:
   icon: 'check-circle'
   color: 'red'
