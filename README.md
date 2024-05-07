@@ -26,6 +26,8 @@ With `reporter: github-pr-review` a comment is added to the Pull Request Convers
 
 ## Inputs
 
+<!-- Please add inputs maintaining alphabetical order -->
+
 ### `fail_on_error`
 
 Optional. Exit code for reviewdog when errors are found [`true`, `false`].

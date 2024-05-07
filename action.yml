@@ -2,6 +2,7 @@ name: 'Run rubocop with reviewdog'
 description: '🐶 Run rubocop with reviewdog on pull requests to improve code review experience.'
 author: 'mgrachev (reviewdog)'
 inputs:
+  # Please add inputs maintaining alphabetical order
   fail_on_error:
     description: |
       Exit code for reviewdog when errors are found [true,false]
@@ -55,6 +56,7 @@ runs:
         REVIEWDOG_VERSION: v0.17.4
         # INPUT_<VARIABLE_NAME> is not available in Composite run steps
         # https://github.community/t/input-variable-name-is-not-available-in-composite-run-steps/127611
+        # Please add inputs maintaining alphabetical order
         INPUT_FAIL_ON_ERROR: ${{ inputs.fail_on_error }}
         INPUT_FILTER_MODE: ${{ inputs.filter_mode }}
         INPUT_GITHUB_TOKEN: ${{ inputs.github_token }}
