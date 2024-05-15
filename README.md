@@ -26,17 +26,35 @@ With `reporter: github-pr-review` a comment is added to the Pull Request Convers
 
 ## Inputs
 
+<!-- Please maintain inputs in alphabetical order -->
+
+### `fail_on_error`
+
+Optional. Exit code for reviewdog when errors are found [`true`, `false`].
+Default is `false`.
+
+### `filter_mode`
+
+Optional. Filtering mode for the reviewdog command [`added`, `diff_context`, `file`, `nofilter`].
+Default is `added`.
+
 ### `github_token`
 
 `GITHUB_TOKEN`. Default is `${{ github.token }}`.
 
-### `rubocop_version`
+### `level`
 
-Optional. Set rubocop version. Possible values:
+Optional. Report level for reviewdog [`info`, `warning`, `error`].
+It's same as `-level` flag of reviewdog.
 
-- empty or omit: install latest version
-- `gemfile`: install version from Gemfile (`Gemfile.lock` should be presented, otherwise it will fallback to latest bundler version)
-- version (e.g. `0.90.0`): install said version
+### `reporter`
+
+Optional. Reporter of reviewdog command [`github-pr-check`, `github-check`, `github-pr-review`].
+The default is `github-pr-check`.
+
+### `reviewdog_flags`
+
+Optional. Additional reviewdog flags.
 
 ### `rubocop_extensions`
 
@@ -57,46 +75,30 @@ You can combine `gemfile`, fixed and latest bundle version as you want to.
 
 Optional. Rubocop flags. (rubocop `<rubocop_flags>`).
 
-### `tool_name`
+### `rubocop_version`
 
-Optional. Tool name to use for reviewdog reporter. Useful when running multiple
-actions with different config.
+Optional. Set rubocop version. Possible values:
 
-### `level`
-
-Optional. Report level for reviewdog [`info`, `warning`, `error`].
-It's same as `-level` flag of reviewdog.
-
-### `reporter`
-
-Optional. Reporter of reviewdog command [`github-pr-check`, `github-check`, `github-pr-review`].
-The default is `github-pr-check`.
-
-### `filter_mode`
-
-Optional. Filtering mode for the reviewdog command [`added`, `diff_context`, `file`, `nofilter`].
-Default is `added`.
-
-### `fail_on_error`
-
-Optional. Exit code for reviewdog when errors are found [`true`, `false`].
-Default is `false`.
-
-### `reviewdog_flags`
-
-Optional. Additional reviewdog flags.
-
-### `workdir`
-
-Optional. The directory from which to look for and run Rubocop. Default `.`.
+- empty or omit: install latest version
+- `gemfile`: install version from Gemfile (`Gemfile.lock` should be presented, otherwise it will fallback to latest bundler version)
+- version (e.g. `0.90.0`): install said version
 
 ### `skip_install`
 
 Optional. Do not install Rubocop or its extensions. Default: `false`.
 
+### `tool_name`
+
+Optional. Tool name to use for reviewdog reporter. Useful when running multiple
+actions with different config.
+
 ### `use_bundler`
 
 Optional. Run Rubocop with bundle exec. Default: `false`.
+
+### `workdir`
+
+Optional. The directory from which to look for and run Rubocop. Default `.`.
 
 ## Example usage
 
