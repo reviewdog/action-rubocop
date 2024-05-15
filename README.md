@@ -26,7 +26,7 @@ With `reporter: github-pr-review` a comment is added to the Pull Request Convers
 
 ## Inputs
 
-<!-- Please add inputs maintaining alphabetical order -->
+<!-- Please maintain inputs in alphabetical order -->
 
 ### `fail_on_error`
 
