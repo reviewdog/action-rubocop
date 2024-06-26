@@ -91,6 +91,11 @@ fi
 if [ "${INPUT_ONLY_CHANGED}" = "true" ]; then
   echo '::group:: Getting changed files list'
 
+  # check if commit is present in repository, otherwise fetch it
+  if ! git cat-file -e "${BASE_REF}"; then
+    git fetch --depth 1 origin "${BASE_REF}"
+  fi
+
   # get intersection of changed files (excluding deleted) with target files for
   # rubocop as an array
   # shellcheck disable=SC2086

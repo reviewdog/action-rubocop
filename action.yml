@@ -20,7 +20,10 @@ inputs:
     description: 'Report level for reviewdog [info,warning,error]'
     default: 'error'
   only_changed:
-    description: "Run Rubocop only on changed (and added) files, for speedup [`true`, `false`]"
+    description: |
+      Run Rubocop only on changed (and added) files, for speedup [`true`, `false`].
+      Will fetch the tip of the base branch with depth 1 from remote origin if it is not available.
+      If you use different remote name or customize the checkout otherwise, make the tip of the base branch available before this action.
     default: 'false'
   reporter:
     description: |

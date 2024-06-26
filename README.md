@@ -52,6 +52,9 @@ It's same as `-level` flag of reviewdog.
 Optional. Run Rubocop only on changed (and added) files, for speedup [`true`, `false`].
 Default: `false`.
 
+Will fetch the tip of the base branch with depth 1 from remote origin if it is not available.
+If you use different remote name or customize the checkout otherwise, make the tip of the base branch available before this action
+
 ### `reporter`
 
 Optional. Reporter of reviewdog command [`github-pr-check`, `github-check`, `github-pr-review`].
