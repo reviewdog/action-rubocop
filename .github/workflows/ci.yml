@@ -2,7 +2,6 @@ name: CI
 on: [pull_request]
 jobs:
   test-skip-install-and-use-bundler:
-    name: runner / rubocop
     runs-on: ubuntu-latest
     defaults:
       run:
