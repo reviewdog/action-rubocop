@@ -1,0 +1,8 @@
+#!/bin/bash
+
+read -r input
+
+if ! [ "$input" == "Mock message for reviewdog" ]; then
+  echo "reviewdog mock got unexpected input: $input"
+  exit 1
+fi

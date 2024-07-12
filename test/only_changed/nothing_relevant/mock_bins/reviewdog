@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "reviewdog mock got called unexpectedly"
+exit 1

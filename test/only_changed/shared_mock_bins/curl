@@ -1,0 +1,8 @@
+#!/bin/bash
+
+arguments="$@"
+
+if [ "$arguments" != "-sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh" ]; then
+  echo "curl mock got unexpected arguments: $arguments"
+  exit 1
+fi
