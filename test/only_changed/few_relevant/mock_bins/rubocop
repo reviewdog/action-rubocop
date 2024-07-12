@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+case ARGV
+when %w[--list-target-files]
+  puts Dir['**/*.rb']
+when %W[--require #{ENV['GITHUB_ACTION_PATH']}/rdjson_formatter/rdjson_formatter.rb --format RdjsonFormatter --fail-level error a.rb]
+  puts 'Mock message for reviewdog'
+else
+  abort "rubocop mock called with unexpected arguments:\n#{ARGV.join("\n")}"
+end
