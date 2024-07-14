@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ "$1" = "exec" ]; then
+  shift
+  eval "$@"
+else
+  echo "Only 'exec' command is supported"
+  exit 1
+fi

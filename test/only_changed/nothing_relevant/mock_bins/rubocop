@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+case ARGV
+when %w[
+  --list-target-files
+]
+  puts Dir['**/*.rb']
+else
+  abort "rubocop mock called with unexpected arguments:\n#{ARGV.join("\n")}"
+end
