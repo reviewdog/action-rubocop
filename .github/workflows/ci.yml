@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.6
+          ruby-version: 3.3
           bundler-cache: true
       - name: rubocop with skip install and using bundler
         uses: ./
@@ -20,7 +20,7 @@ jobs:
           github_token: ${{ secrets.github_token }}
           skip_install: 'true'
           use_bundler: 'true'
-      - run: test "$(bundle exec rubocop --version)" == "1.18.1"
+      - run: test "$(bundle exec rubocop --version)" == "1.65.0"
   test-only_changed:
     runs-on: ubuntu-latest
     defaults:
