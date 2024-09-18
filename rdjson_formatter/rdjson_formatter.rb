@@ -18,8 +18,6 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
 
   def file_finished(file, offenses)
     offenses.each do |offense|
-      next if offense.location == RuboCop::Cop::Offense::NO_LOCATION
-
       @rdjson[:diagnostics] << build_diagnostic(file, offense)
     end
 
@@ -59,17 +57,7 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
     diagnostic = {
       message: message,
       location: {
-        path: convert_path(file),
-        range: {
-          start: {
-            line: offense.location.begin.line,
-            column: offense.location.begin.column + 1
-          },
-          end: {
-            line: offense.location.end.line,
-            column: offense.location.end.column + 1
-          }
-        }
+        path: convert_path(file)
       },
       severity: convert_severity(offense.severity),
       code: {
@@ -77,10 +65,26 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
       },
       original_output: build_original_output(file, offense)
     }
+    diagnostic[:location][:range] = build_range(offense) if offense.location != RuboCop::Cop::Offense::NO_LOCATION
 
     diagnostic[:suggestions] = build_suggestions(offense) if offense.correctable? && offense.corrector
 
     diagnostic
+  end
+
+  # @param [RuboCop::Cop::Offense] offense
+  # @return [Hash]
+  def build_range(offense)
+    {
+      start: {
+        line: offense.location.begin.line,
+        column: offense.location.begin.column + 1
+      },
+      end: {
+        line: offense.location.end.line,
+        column: offense.location.end.column + 1
+      }
+    }
   end
 
   # @param [RuboCop::Cop::Offense] offense
