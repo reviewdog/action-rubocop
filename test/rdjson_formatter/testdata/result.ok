@@ -293,6 +293,17 @@
       ]
     },
     {
+      "message": "Empty file detected.",
+      "location": {
+        "path": "test/rdjson_formatter/testdata/global_offenses.rb"
+      },
+      "severity": "WARNING",
+      "code": {
+        "value": "Lint/EmptyFile"
+      },
+      "original_output": "test/rdjson_formatter/testdata/global_offenses.rb:1:1: W: Lint/EmptyFile: Empty file detected."
+    },
+    {
       "message": "Method parameter must be at least 3 characters long.",
       "location": {
         "path": "test/rdjson_formatter/testdata/not_correctable_offenses.rb",
