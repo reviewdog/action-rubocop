@@ -3,11 +3,11 @@ description: '🐶 Run rubocop with reviewdog on pull requests to improve code r
 author: 'mgrachev (reviewdog)'
 inputs:
   # Please maintain inputs in alphabetical order
-  fail_on_error:
+  fail_level:
     description: |
-      Exit code for reviewdog when errors are found [true,false]
-      Default is `false`.
-    default: 'false'
+      Exit code 1 for reviewdog if it finds at least 1 issue with severity greater than or equal to the given level [none,any,info,warning,error].
+      Default is `none`.
+    default: 'none'
   filter_mode:
     description: |
       Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
@@ -63,7 +63,7 @@ runs:
         # INPUT_<VARIABLE_NAME> is not available in Composite run steps
         # https://github.community/t/input-variable-name-is-not-available-in-composite-run-steps/127611
         # Please maintain inputs in alphabetical order
-        INPUT_FAIL_ON_ERROR: ${{ inputs.fail_on_error }}
+        INPUT_FAIL_LEVEL: ${{ inputs.fail_level }}
         INPUT_FILTER_MODE: ${{ inputs.filter_mode }}
         INPUT_GITHUB_TOKEN: ${{ inputs.github_token }}
         INPUT_LEVEL: ${{ inputs.level }}
