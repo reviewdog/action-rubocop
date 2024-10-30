@@ -28,6 +28,11 @@ With `reporter: github-pr-review` a comment is added to the Pull Request Convers
 
 <!-- Please maintain inputs in alphabetical order -->
 
+### `fail_level`
+
+Optional. Exit code 1 for reviewdog if it finds at least 1 issue with severity greater than or equal to the given level [`none`, `any`, `info`, `warning`, `error`].
+Default is `none`.
+
 ### `fail_on_error`
 
 Optional. Exit code for reviewdog when errors are found [`true`, `false`].
