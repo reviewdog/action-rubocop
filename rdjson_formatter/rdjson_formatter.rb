@@ -106,7 +106,7 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
     sorted_corrections = corrections.sort_by { |range, _| range.begin_pos }
 
     sorted_corrections.each do |range, replacement_text|
-      next if range.end_pos <= min_begin_pos || range.begin_pos >= max_end_pos
+      next if range.end_pos < min_begin_pos || range.begin_pos > max_end_pos
 
       corrected_text += source_buffer.source[current_pos...range.begin_pos] if current_pos < range.begin_pos
       corrected_text += replacement_text.to_s
