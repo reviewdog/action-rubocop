@@ -109,7 +109,7 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
       next if range.end_pos <= min_begin_pos || range.begin_pos >= max_end_pos
 
       corrected_text += source_buffer.source[current_pos...range.begin_pos] if current_pos < range.begin_pos
-      corrected_text += replacement_text
+      corrected_text += replacement_text.to_s
       current_pos = range.end_pos
     end
 
