@@ -1,0 +1,21 @@
+{
+  "name": "Ruby Development Container",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "postCreateCommand": "bundle install",
+  "extensions": [
+    "rebornix.ruby",
+    "castwide.solargraph",
+    "wingrunr21.vscode-ruby",
+    "misogi.ruby-rubocop"
+  ],
+  "remoteUser": "vscode",
+  "remoteEnv": {
+    "RACK_ENV": "development"
+  }
+}
