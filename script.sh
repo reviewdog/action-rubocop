@@ -125,7 +125,7 @@ echo '::group:: Running rubocop with reviewdog 🐶 ...'
 ${BUNDLE_EXEC}rubocop \
   --require ${GITHUB_ACTION_PATH}/rdjson_formatter/rdjson_formatter.rb \
   --format RdjsonFormatter \
-  --fail-level error \
+  --fail-level info \
   ${INPUT_RUBOCOP_FLAGS} \
   "${CHANGED_FILES[@]}" \
   | reviewdog -f=rdjson \
