@@ -114,7 +114,7 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
   def build_corrected_text(corrections, source_buffer, merged_range)
     current_pos = merged_range.begin_pos
     corrected_text = ''
-    
+
     corrections.sort_by { |range, _| range.begin_pos }.each do |range, replacement_text|
       next if range.end_pos < merged_range.begin_pos || range.begin_pos > merged_range.end_pos
 
