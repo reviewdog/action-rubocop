@@ -105,12 +105,19 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
     }]
   end
 
+  # @param [Array{Array}] corrections
+  # @param [Parser::Source::Buffer] source_buffer
+  # @return [Parser::Source::Range]
   def determine_merged_range(corrections, source_buffer)
     min_begin_pos = corrections.map { |range, _| range.begin_pos }.min
     max_end_pos = corrections.map { |range, _| range.end_pos }.max
     Parser::Source::Range.new(source_buffer, min_begin_pos, max_end_pos)
   end
 
+  # @param [Array{Array}] corrections
+  # @param [Parser::Source::Buffer] source_buffer
+  # @param [Parser::Source::Range] merged_range
+  # @return [String]
   def build_corrected_text(corrections, source_buffer, merged_range)
     current_pos = merged_range.begin_pos
     corrected_text = ''
@@ -127,6 +134,8 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
     corrected_text
   end
 
+  # @param [Parser::Source::Range] merged_range
+  # @return [Hash]
   def build_suggestion_range(merged_range)
     {
       start: {
