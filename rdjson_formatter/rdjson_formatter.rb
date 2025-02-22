@@ -96,38 +96,48 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
     corrections = offense.corrector.as_replacements
     return [] if corrections.empty?
 
+    merged_range = determine_merged_range(corrections, source_buffer)
+    corrected_text = build_corrected_text(corrections, source_buffer, merged_range)
+
+    [{
+      range: build_suggestion_range(merged_range),
+      text: corrected_text
+    }]
+  end
+
+  def determine_merged_range(corrections, source_buffer)
     min_begin_pos = corrections.map { |range, _| range.begin_pos }.min
     max_end_pos = corrections.map { |range, _| range.end_pos }.max
-    merged_range = Parser::Source::Range.new(source_buffer, min_begin_pos, max_end_pos)
+    Parser::Source::Range.new(source_buffer, min_begin_pos, max_end_pos)
+  end
 
+  def build_corrected_text(corrections, source_buffer, merged_range)
+    current_pos = merged_range.begin_pos
     corrected_text = ''
-    current_pos = min_begin_pos
-
-    sorted_corrections = corrections.sort_by { |range, _| range.begin_pos }
-
-    sorted_corrections.each do |range, replacement_text|
-      next if range.end_pos < min_begin_pos || range.begin_pos > max_end_pos
+    
+    corrections.sort_by { |range, _| range.begin_pos }.each do |range, replacement_text|
+      next if range.end_pos < merged_range.begin_pos || range.begin_pos > merged_range.end_pos
 
       corrected_text += source_buffer.source[current_pos...range.begin_pos] if current_pos < range.begin_pos
       corrected_text += replacement_text.to_s
       current_pos = range.end_pos
     end
 
-    corrected_text += source_buffer.source[current_pos...max_end_pos] if current_pos < max_end_pos
+    corrected_text += source_buffer.source[current_pos...merged_range.end_pos] if current_pos < merged_range.end_pos
+    corrected_text
+  end
 
-    [{
-      range: {
-        start: {
-          line: merged_range.line,
-          column: merged_range.column + 1 # rubocop is 0-origin, reviewdog is 1-origin
-        },
-        end: {
-          line: merged_range.last_line,
-          column: merged_range.last_column + 1
-        }
+  def build_suggestion_range(merged_range)
+    {
+      start: {
+        line: merged_range.line,
+        column: merged_range.column + 1 # rubocop is 0-origin, reviewdog is 1-origin
       },
-      text: corrected_text
-    }]
+      end: {
+        line: merged_range.last_line,
+        column: merged_range.last_column + 1
+      }
+    }
   end
 
   # https://github.com/reviewdog/reviewdog/blob/1d8f6d6897dcfa67c33a2ccdc2ea23a8cca96c8c/proto/rdf/reviewdog.proto
