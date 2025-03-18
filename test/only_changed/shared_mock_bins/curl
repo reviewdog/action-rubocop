@@ -2,7 +2,7 @@
 
 arguments="$*"
 
-if [ "$arguments" != "-sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh" ]; then
+if [ "$arguments" != "-sfL https://raw.githubusercontent.com/reviewdog/reviewdog/fd59714416d6d9a1c0692d872e38e7f8448df4fc/install.sh" ]; then
   echo "curl mock got unexpected arguments: $arguments"
   exit 1
 fi
