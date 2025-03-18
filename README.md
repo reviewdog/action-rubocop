@@ -145,12 +145,12 @@ jobs:
     env:
       BUNDLE_ONLY: rubocop
     steps:
-      - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: ruby/setup-ruby@1a615958ad9d422dd932dc1d5823942ee002799f # v1.227.0
         with:
           ruby-version: '3.3'
           bundler-cache: true
-      - uses: reviewdog/action-rubocop@v2
+      - uses: reviewdog/action-rubocop@fcb74ba274da10b18d038d0bcddaae3518739634 # v2.21.2
         with:
           reporter: github-pr-review # Default is github-pr-check
           skip_install: true
