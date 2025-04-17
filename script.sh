@@ -101,7 +101,7 @@ if [ "${INPUT_ONLY_CHANGED}" = "true" ]; then
   # shellcheck disable=SC2086
   readarray -t CHANGED_FILES < <(
     comm -12 \
-      <(git diff --diff-filter=d --name-only "${BASE_REF}..${HEAD_REF}" | sort || kill $$) \
+      <(git diff --relative --diff-filter=d --name-only "${BASE_REF}..${HEAD_REF}" | sort || kill $$) \
       <(${BUNDLE_EXEC}rubocop --list-target-files | sort || kill $$)
   )
 
