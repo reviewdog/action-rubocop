@@ -1,0 +1,11 @@
+name: test
+on: [ pull_request ]
+jobs:
+  test-skip-install-and-use-bundler:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - run: docker build -t test .
+      - run: docker run --rm -t test
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{secrets.GITHUB_TOKEN}}
