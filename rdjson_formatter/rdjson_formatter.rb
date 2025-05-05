@@ -90,23 +90,44 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
   # @param [RuboCop::Cop::Offense] offense
   # @return [Array{Hash}]
   def build_suggestions(offense)
-    range, text = offense.corrector.as_replacements[0]
+    return [] unless offense.correctable? && offense.corrector
 
-    [
-      {
-        range: {
-          start: {
-            line: range.begin.line,
-            column: range.begin.column + 1 # rubocop is 0-origin, reviewdog is 1-origin
-          },
-          end: {
-            line: range.end.line,
-            column: range.end.column + 1
-          }
+    source_buffer = offense.location.source_buffer
+    corrections = offense.corrector.as_replacements
+    return [] if corrections.empty?
+
+    min_begin_pos = corrections.map { |range, _| range.begin_pos }.min
+    max_end_pos = corrections.map { |range, _| range.end_pos }.max
+    merged_range = Parser::Source::Range.new(source_buffer, min_begin_pos, max_end_pos)
+
+    corrected_text = ''
+    current_pos = min_begin_pos
+
+    sorted_corrections = corrections.sort_by { |range, _| range.begin_pos }
+
+    sorted_corrections.each do |range, replacement_text|
+      next if range.end_pos < min_begin_pos || range.begin_pos > max_end_pos
+
+      corrected_text += source_buffer.source[current_pos...range.begin_pos] if current_pos < range.begin_pos
+      corrected_text += replacement_text.to_s
+      current_pos = range.end_pos
+    end
+
+    corrected_text += source_buffer.source[current_pos...max_end_pos] if current_pos < max_end_pos
+
+    [{
+      range: {
+        start: {
+          line: merged_range.line,
+          column: merged_range.column + 1 # rubocop is 0-origin, reviewdog is 1-origin
         },
-        text: text
-      }
-    ]
+        end: {
+          line: merged_range.last_line,
+          column: merged_range.last_column + 1
+        }
+      },
+      text: corrected_text
+    }]
   end
 
   # https://github.com/reviewdog/reviewdog/blob/1d8f6d6897dcfa67c33a2ccdc2ea23a8cca96c8c/proto/rdf/reviewdog.proto
