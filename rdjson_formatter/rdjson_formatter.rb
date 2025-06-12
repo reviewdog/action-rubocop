@@ -90,23 +90,63 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
   # @param [RuboCop::Cop::Offense] offense
   # @return [Array{Hash}]
   def build_suggestions(offense)
-    range, text = offense.corrector.as_replacements[0]
+    return [] unless offense.correctable? && offense.corrector
 
-    [
-      {
-        range: {
-          start: {
-            line: range.begin.line,
-            column: range.begin.column + 1 # rubocop is 0-origin, reviewdog is 1-origin
-          },
-          end: {
-            line: range.end.line,
-            column: range.end.column + 1
-          }
-        },
-        text: text
+    source_buffer = offense.location.source_buffer
+    corrections = offense.corrector.as_replacements
+    return [] if corrections.empty?
+
+    merged_range = determine_merged_range(corrections, source_buffer)
+    corrected_text = build_corrected_text(corrections, source_buffer, merged_range)
+
+    [{
+      range: build_suggestion_range(merged_range),
+      text: corrected_text
+    }]
+  end
+
+  # @param [Array{Array}] corrections
+  # @param [Parser::Source::Buffer] source_buffer
+  # @return [Parser::Source::Range]
+  def determine_merged_range(corrections, source_buffer)
+    min_begin_pos = corrections.map { |range, _| range.begin_pos }.min
+    max_end_pos = corrections.map { |range, _| range.end_pos }.max
+    Parser::Source::Range.new(source_buffer, min_begin_pos, max_end_pos)
+  end
+
+  # @param [Array{Array}] corrections
+  # @param [Parser::Source::Buffer] source_buffer
+  # @param [Parser::Source::Range] merged_range
+  # @return [String]
+  def build_corrected_text(corrections, source_buffer, merged_range)
+    current_pos = merged_range.begin_pos
+    corrected_text = ''
+
+    corrections.sort_by { |range, _| range.begin_pos }.each do |range, replacement_text|
+      next if range.end_pos < merged_range.begin_pos || range.begin_pos > merged_range.end_pos
+
+      corrected_text += source_buffer.source[current_pos...range.begin_pos] if current_pos < range.begin_pos
+      corrected_text += replacement_text.to_s
+      current_pos = range.end_pos
+    end
+
+    corrected_text += source_buffer.source[current_pos...merged_range.end_pos] if current_pos < merged_range.end_pos
+    corrected_text
+  end
+
+  # @param [Parser::Source::Range] merged_range
+  # @return [Hash]
+  def build_suggestion_range(merged_range)
+    {
+      start: {
+        line: merged_range.line,
+        column: merged_range.column + 1 # rubocop is 0-origin, reviewdog is 1-origin
+      },
+      end: {
+        line: merged_range.last_line,
+        column: merged_range.last_column + 1
       }
-    ]
+    }
   end
 
   # https://github.com/reviewdog/reviewdog/blob/1d8f6d6897dcfa67c33a2ccdc2ea23a8cca96c8c/proto/rdf/reviewdog.proto
