@@ -17,7 +17,7 @@ workflows:
         - 'haya14busa/action-update-semver@v1.2.1'
     '.github/workflows/reviewdog.yml':
         - 'actions/checkout@v4.2.2'
-        - 'reviewdog/action-misspell@v1.26.1'
+        - 'reviewdog/action-misspell@v1.30.4'
         - 'reviewdog/action-shellcheck@v1.29.0'
         - 'reviewdog/action-yamllint@v1.20.0'
     '.github/workflows/test_rdjson_formatter.yml':
@@ -54,9 +54,9 @@ dependencies:
         commit: 'sha1-d6b40096afad49ca676145faaba7190df29a9807'
         owner_id: 48765237
         repo_id: 234837904
-    'reviewdog/action-misspell@v1.26.1':
-        ref: 'v1.26.1'
-        commit: 'sha1-18ffb61effb93b47e332f185216be7e49592e7e1'
+    'reviewdog/action-misspell@v1.30.4':
+        ref: 'v1.30.4'
+        commit: 'sha1-840bfbe9f804da9afb0bd739dc4689012f3fdd2d'
         owner_id: 48765237
         repo_id: 208637003
     'reviewdog/action-setup@v1':
