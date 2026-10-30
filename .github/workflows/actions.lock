@@ -5,7 +5,7 @@ version: 'v0.0.3'
 workflows:
     '.github/workflows/ci.yml':
         - 'actions/checkout@v4.2.2'
-        - 'ruby/setup-ruby@922ebc4c5262cd14e07bb0e1db020984b6c064fe'
+        - 'ruby/setup-ruby@v1.335.0'
     '.github/workflows/depup.yml':
         - 'actions/checkout@v4.2.2'
         - 'peter-evans/create-pull-request@v6.1.0'
@@ -22,7 +22,7 @@ workflows:
         - 'reviewdog/action-yamllint@v1.20.0'
     '.github/workflows/test_rdjson_formatter.yml':
         - 'actions/checkout@v4.2.2'
-        - 'ruby/setup-ruby@922ebc4c5262cd14e07bb0e1db020984b6c064fe'
+        - 'ruby/setup-ruby@v1.335.0'
 dependencies:
     'actions/checkout@v4.2.2':
         ref: 'v4.2.2'
@@ -76,8 +76,8 @@ dependencies:
         commit: 'sha1-1dca3ad811867be18fbe293a9818d715a6c2cd46'
         owner_id: 48765237
         repo_id: 233270440
-    'ruby/setup-ruby@922ebc4c5262cd14e07bb0e1db020984b6c064fe':
-        ref: 'master'
-        commit: 'sha1-922ebc4c5262cd14e07bb0e1db020984b6c064fe'
+    'ruby/setup-ruby@v1.335.0':
+        ref: 'v1.335.0'
+        commit: 'sha1-7f797815d8adceb1c412e7abefdd1ab4abc47a5f'
         owner_id: 210414
         repo_id: 231208785

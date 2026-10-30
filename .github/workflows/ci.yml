@@ -10,9 +10,9 @@ jobs:
       BUNDLE_GEMFILE: ${{ github.workspace }}/test/using_bundler/Gemfile
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: ruby/setup-ruby@922ebc4c5262cd14e07bb0e1db020984b6c064fe # v1.226.0
+      - uses: ruby/setup-ruby@v1.335.0
         with:
-          ruby-version: 3.3
+          ruby-version: '3.3'
           bundler-cache: true
       - name: rubocop with skip install and using bundler
         uses: ./
