@@ -410,10 +410,10 @@
             },
             "end": {
               "line": 5,
-              "column": 14
+              "column": 9
             }
           },
-          "text": "a + b"
+          "text": ""
         }
       ]
     }
